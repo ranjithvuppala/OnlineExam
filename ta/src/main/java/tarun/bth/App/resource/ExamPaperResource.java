@@ -41,10 +41,14 @@ public class ExamPaperResource {
         return examPaperDAO.findQuestionById(question_id);
     }
 
-    @DELETE
-    @
-    /*@GET
+
+    @GET
     public String getWords(){
         return "Hello World,";
-    }*/
+    }
+    @GET
+    @Path("/hello")
+    public String getdWords(){
+        return "Hello World,";
+    }
 }
