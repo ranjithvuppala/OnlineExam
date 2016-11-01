@@ -32,5 +32,5 @@ public interface LoginDAO {
     public int create(@BindBean Login login);
 
     @SqlUpdate("UPDATE `login` set username= :username, password= :password WHERE id = :id")
-    int update(@Bind("id") int id,@BindBean Login login);
+    public int update(@BindBean Login login);
 }

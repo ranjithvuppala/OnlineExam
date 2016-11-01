@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Login {
     @JsonProperty
-    private int id;
+    private Integer id;
 
     @JsonProperty
     @NotEmpty
@@ -18,13 +18,13 @@ public class Login {
 
     public Login(){}
 
-    public Login(int id, String username, String password){
+    public Login(Integer id, String username, String password){
 
         this.id=id;
         this.username=username;
         this.password=password;
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Login {
 
     public String getPassword() { return password;}
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

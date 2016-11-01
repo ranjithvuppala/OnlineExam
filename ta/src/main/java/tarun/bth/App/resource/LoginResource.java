@@ -73,7 +73,12 @@ public class LoginResource {
 
     @PUT
     @Path("/{id}")
-    public int updateLogin(@PathParam("id") int id, Login login){return loginDAO.update(id,login);}
+    public int updateLogin(@PathParam("id") Integer id, Login updatedlogin){
+       Login login=loginDAO.findUserById(id);
+        login.setUsername(updatedlogin.getUsername());
+        login.setPassword(updatedlogin.getPassword());
+        return loginDAO.update(login);
+    }
    /* @GET
     public String getWords(){
         return "Hello World,";

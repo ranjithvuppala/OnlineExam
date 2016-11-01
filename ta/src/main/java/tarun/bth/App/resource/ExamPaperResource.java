@@ -37,18 +37,30 @@ public class ExamPaperResource {
     }
     @GET
     @Path("/{question_id}")
-    public ExamPaper getLoginById(@PathParam("question_id") int question_id) {
+    public ExamPaper getQuestionById(@PathParam("question_id") int question_id) {
         return examPaperDAO.findQuestionById(question_id);
     }
 
+    @PUT
+    @Path("/{question_id}")
+    public int updateQuestion(@PathParam("question_id") int question_id, ExamPaper updatedexamPaper){
+        ExamPaper examPaper= examPaperDAO.findQuestionById(question_id);
+        examPaper.setQuestion(updatedexamPaper.getQuestion());
+        examPaper.setFirstoption(updatedexamPaper.getFirstoption());
+        examPaper.setSecondoption(updatedexamPaper.getSecondoption());
+        examPaper.setThirdoption(updatedexamPaper.getThirdoption());
+        examPaper.setFourthoption(updatedexamPaper.getFourthoption());
 
-    @GET
+        return examPaperDAO.update(question_id,examPaper);
+    }
+
+    @DELETE
+    @Path("/{question_id}")
+    public void deleteQuestion(@PathParam("question_id") int question_id) {
+        this.examPaperDAO.delete(question_id);
+    }
+    /*@GET
     public String getWords(){
         return "Hello World,";
-    }
-    @GET
-    @Path("/hello")
-    public String getdWords(){
-        return "Hello World,";
-    }
+    }*/
 }

@@ -26,4 +26,10 @@ public interface ExamPaperDAO {
 
     @SqlQuery("SELECT * FROM `ExamPaper` WHERE question_id = :question_id")
     public ExamPaper findQuestionById(@Bind("question_id") int question_id);
+
+    @SqlUpdate("UPDATE `ExamPaper` set question= :question,firstoption= :firstoption,secondoption= :secondoption,thirdoption= :thirdoption,fourthoption= :fourthoption WHERE question_id = :question_id")
+    int update(@Bind("question_id") int question_id,@BindBean ExamPaper examPaper);
+
+    @SqlUpdate("DELETE FROM `ExamPaper` WHERE question_id = :question_id")
+    int delete(@Bind("question_id") int question_id);
 }

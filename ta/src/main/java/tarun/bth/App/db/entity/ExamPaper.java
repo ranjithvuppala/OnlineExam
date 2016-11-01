@@ -4,7 +4,7 @@ package tarun.bth.App.db.entity;
 
 public class ExamPaper {
 
-    private int question_id;
+    private Integer question_id;
 
 
     private String question;
@@ -23,7 +23,7 @@ public class ExamPaper {
 
     public ExamPaper(){}
 
-    public ExamPaper(int question_id, String question, String firstoption, String secondoption, String thirdoption, String fourthoption){
+    public ExamPaper(Integer question_id, String question, String firstoption, String secondoption, String thirdoption, String fourthoption){
 
         this.question_id=question_id;
         this.question=question;
@@ -32,7 +32,7 @@ public class ExamPaper {
         this.thirdoption=thirdoption;
         this.fourthoption=fourthoption;
     }
-    public int getQuestion_id() {
+    public Integer getQuestion_id() {
         return question_id;
     }
 
@@ -48,7 +48,7 @@ public class ExamPaper {
 
     public String getFourthoption() { return fourthoption;}
 
-    public void setQuestion_id(int question_id) {
+    public void setQuestion_id(Integer question_id) {
         this.question_id = question_id;
     }
 
