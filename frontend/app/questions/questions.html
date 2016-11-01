@@ -1,0 +1,19 @@
+
+<div class="container">
+    <navigation1 class="row"></navigation1>
+
+    <div class="row">
+        <question-form class="col-xs-12"></question-form>
+
+        <div class="col-xs-12 text-center" ng-if="!vm.hasQuestions()">
+            <div class="alert alert-info" role="alert">
+                <h4>Oh no!</h4>
+                <p>There are no questions yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <question class="col-xs-6" ng-repeat="question in vm.questions" data="question"></question>
+    </div>
+</div>
