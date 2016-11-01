@@ -7,3 +7,14 @@ function appConfig($routeProvider) {
             redirectTo: '/'
         })
 }
+
+
+function questionConfig($routeProvider) {
+    $routeProvider
+        .when('/info', { template: '<info1></info1>' })
+        .when('/', { template: '<questions></questions>' })
+
+        .otherwise({
+            redirectTo: '/'
+        })
+}

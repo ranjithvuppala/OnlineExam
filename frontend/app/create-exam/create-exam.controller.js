@@ -1,3 +1,4 @@
+/*
 function CreateExamController() {
     var vm = this;
     vm.$oninit = oninit;
@@ -13,3 +14,4 @@ function CreateExamController() {
 
     }
 }
+*/

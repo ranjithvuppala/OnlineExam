@@ -36,15 +36,16 @@ public class LoginResource {
             //String result1 = "login successful";
             //LoginResult res1= new LoginResult("success");
             //return Response.SC_OK;
-            throw new WebApplicationException(200);
+            throw new WebApplicationException("Login Successful",Response.SC_OK);
             //return res1;
         }
 
         else{
              //LoginResult result = "login failure";
             //return Response.SC_NO_CONTENT;
-            throw new WebApplicationException(401);
+
             //LoginResult res= new LoginResult("failure");
+            throw new WebApplicationException("Login Failed",Response.SC_UNAUTHORIZED);
             //return res;
         }
 

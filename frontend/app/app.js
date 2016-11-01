@@ -8,18 +8,19 @@ angular.module('app', ['ngRoute'])
             data: '<',
             onSubmit: '<'
 
-        },
-        require: {
-            CreateExamController: '^?createExam'
         }
+
     })
 
-    .component('createExam', {
-        templateUrl: 'app/create-exam/create-exam.html',
-        controller: CreateExamController,
-        controllerAs: 'vm'
-    })
 
+
+
+
+    //.......................................................................
+
+
+
+    //.................................................................
 
     .component('loginPage', {templateUrl: 'app/login-page/login-page.html' })
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
