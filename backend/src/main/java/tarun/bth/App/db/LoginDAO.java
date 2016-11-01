@@ -25,8 +25,8 @@ public interface LoginDAO {
     public Login findUserById(@Bind("id") int id);
 
     @SqlQuery("SELECT * FROM login WHERE username= :username AND password = :password")
-    public Login findUserByUsername(@Bind("username") String username,@Bind("password") String password);
-
+    //public Login findUserByUsername(@Bind("username") String username,@Bind("password") String password);
+    public Login findUserByUsername(@BindBean Login login);
     @SqlUpdate("INSERT INTO `login` VALUES(:id,:username,:password)")
     @GetGeneratedKeys
     public int create(@BindBean Login login);

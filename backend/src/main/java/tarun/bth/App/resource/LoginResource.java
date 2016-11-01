@@ -1,6 +1,7 @@
 package tarun.bth.App.resource;
 
 import com.google.common.base.Preconditions;
+import org.eclipse.jetty.server.Response;
 import tarun.bth.App.db.LoginDAO;
 import tarun.bth.App.db.entity.Login;
 import tarun.bth.App.db.entity.LoginResult;
@@ -9,7 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
 import java.util.List;
 
 
@@ -30,14 +31,14 @@ public class LoginResource {
     }
 
     @POST
-    public int createLogin(@NotNull Login login) {
-       return this.loginDAO.create(login);
-       /* if (login != null) {
-            loginDAO.create(login);
-            throw new WebApplicationException(Response.Status.OK);
+    public int createLogin(Login login) {
+       Login test1 = loginDAO.findUserByUsername(login);
+       if (test1 != null) {
+            //loginDAO.create(login);
+            throw new WebApplicationException("Login Successful",Response.SC_OK);
         } else {
-            throw new WebApplicationException(Response.Status.BAD_REQUEST);
-        }*/
+            throw new WebApplicationException("Login Unsuccessful",Response.SC_UNAUTHORIZED);
+        }
     }
 
    @GET
@@ -51,6 +52,7 @@ public class LoginResource {
    // public Login getLoginByUsername(@PathParam("username") String username, @PathParam("password") String password) {
    //    return loginDAO.findUserByUsername(username,password);
    // }
+    /*
     @GET
     @Path("/{username}/{password}")
     public LoginResult getLoginByUsername(@PathParam("username") String username, @PathParam("password") String password) {
