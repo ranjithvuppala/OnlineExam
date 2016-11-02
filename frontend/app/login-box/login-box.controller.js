@@ -1,4 +1,4 @@
-function LoginBoxController(loginService) {
+function LoginBoxController(loginService,$location) {
     var vm = this;
 
     vm.$onInit = $onInit;
@@ -18,25 +18,40 @@ function LoginBoxController(loginService) {
 
     function onUserDidSubmit(username, password) {
 
+
         var test = function(response){
-            //console.log(response);
-            return(response);
+            //console.log(response.status);
+            if(response.status == 200)
+            {
+                console.log("Ranjith Vuppala");
+                    $location.path("/redirect");
+            }
+            else{
+                console.log("Tarun Aluguri");
+                vm.showError();
+                vm.onReset();
+            }
 
 
         };
+
+
+
          return loginService.verify(username, password)
-            //.then()
-            //.catch(test)
-            //.then(alert("Login Successful"))
+            .then(test)
+            .catch(test);
+
+
+            //.then($location.path('/redirect'))
             //.then(vm.createExamController.$oninit)
-             //.then(test)
+            // .then(onUserDidReset)
              //.catch(test);
             //console.log(res.$$state);
             //console.log(res.$$state.name);
             //.then(onUserDidReset)
 
-            //.catch(vm.showError)
-            // .then(onUserDidReset);
+            //.catch(vm.showError);
+            //.then(onUserDidReset);
 
     }
 
