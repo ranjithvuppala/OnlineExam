@@ -13,7 +13,6 @@ function LoginBoxController(loginService,$location) {
         var parentControllerHasSetData = angular.isDefined(vm.data);
         vm.username = parentControllerHasSetData ? vm.data.username : '';
         vm.password  = parentControllerHasSetData ? vm.data.password  : '';
-        vm.notes = [];
     }
 
     function onUserDidSubmit(username, password) {
@@ -23,11 +22,10 @@ function LoginBoxController(loginService,$location) {
             //console.log(response.status);
             if(response.status == 200)
             {
-                console.log("Ranjith Vuppala");
                     $location.path("/redirect");
             }
             else{
-                console.log("Tarun Aluguri");
+
                 vm.showError();
                 vm.onReset();
             }

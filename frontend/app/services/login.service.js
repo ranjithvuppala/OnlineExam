@@ -1,13 +1,14 @@
 
+//loginService.$inject = ['$http', '$cookieStore', '$rootScope'];
+
 function loginService($http,$interpolate) {
     var userdata = $interpolate('/api/login/');
 
     return {
 
-        verify: verify
+        verify: verify,
 
     };
-
 
 
     function verify(username, password) {
@@ -19,6 +20,5 @@ function loginService($http,$interpolate) {
         return $http.post(userdata(), data);
 
     }
-
 
 }

@@ -4,6 +4,7 @@ import tarun.bth.App.db.ExamPaperDAO;
 import tarun.bth.App.db.entity.ExamPaper;
 import tarun.bth.App.db.entity.Login;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,6 +21,7 @@ public class ExamPaperResource {
     }
 
     @GET
+
     //@Path("/all/")
     public List<ExamPaper> getAllQuestions() {
         return examPaperDAO.getAllQuestions();

@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute'])
+angular.module('app', ["ngRoute"])
     .factory('loginService',loginService)
     .component('loginBox', {
         templateUrl: 'app/login-box/login-box.html',
@@ -52,7 +52,8 @@ angular.module('app', ['ngRoute'])
     .component('questions', {
         templateUrl: 'app/questions/questions.html',
         controller: QuestionsController,
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+
     })
     .component('navigation1', { templateUrl: 'app/navigation/navigation1.html' })
     .component('info1', { templateUrl: 'app/info/info1.html' })
@@ -65,5 +66,4 @@ angular.module('app', ['ngRoute'])
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
     .component('info', { templateUrl: 'app/info/info.html' })
     //.component('questions',{ templateUrl: 'app/questions/questions.html'})
-    .config(appConfig);
-
+    .config(app

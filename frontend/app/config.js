@@ -3,6 +3,7 @@ function appConfig($routeProvider) {
         .when('/login', { template: '<login-page></login-page>' })
         .when('/', { template: '<info></info>' })
         .when('/redirect', { template: '<questions></questions>'})
+        .when('/info1', { template: '<info1></info1>' })
         .otherwise({
             redirectTo: '/'
         })
