@@ -66,4 +66,4 @@ angular.module('app', ["ngRoute"])
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
     .component('info', { templateUrl: 'app/info/info.html' })
     //.component('questions',{ templateUrl: 'app/questions/questions.html'})
-    .config(app
+    .config(app);
