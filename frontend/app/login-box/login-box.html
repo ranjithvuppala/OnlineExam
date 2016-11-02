@@ -1,0 +1,19 @@
+<form name="vm.loginBox" ng-submit="vm.onSubmit(vm.username, vm.password)" class="panel panel-default">
+
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" class="form-control" ng-model="vm.username" type="text" placeholder="Username" autocomplete="off" required> </input>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" class="form-control" ng-model="vm.password" type = "password" placeholder="Password" required> </input>
+        </div>
+    </div>
+
+    <div class="panel-footer text-right">
+        <button type="submit" class="btn btn-xs btn-info">Login</button>
+
+    </div>
+</form>

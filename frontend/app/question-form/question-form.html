@@ -1,0 +1,39 @@
+<form name="vm.questionForm" ng-submit="vm.onSubmit(vm.quest, vm.firstoption, vm.secondoption, vm.thirdoption, vm.fourthoption, vm.correctoption)" class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group col-xs-12">
+            <label for="question">Question</label>
+            <textarea id="question" name="question" class="form-control" ng-model="vm.quest" type="text" placeholder="Enter question....." autocomplete="off" required> </textarea>
+        </div>
+
+        <div class="form-group col-xs-2">
+            <label for="firstoption">First option</label>
+            <input id="firstoption" name="firstoption" class="form-control" ng-model="vm.firstoption" placeholder="Enter First option.." required> </input>
+        </div>
+
+        <div class="form-group col-xs-2">
+            <label for="secondoption">Second option</label>
+            <input id="secondoption" name="secondoption" class="form-control" ng-model="vm.secondoption" placeholder="Enter Second option.." required> </input>
+        </div>
+
+        <div class="form-group col-xs-2">
+            <label for="thirdoption">Third option</label>
+            <input id="thirdoption" name="thirdoption" class="form-control" ng-model="vm.thirdoption" placeholder="Enter Third option.." required> </input>
+        </div>
+
+        <div class="form-group col-xs-2">
+            <label for="fourthoption">Fourth option</label>
+            <input id="fourthoption" name="fourthoption" class="form-control" ng-model="vm.fourthoption" placeholder="Enter Fourth option.." required> </input>
+        </div>
+
+        <div class="form-group col-xs-2">
+            <label for="correctoption">Correct option</label>
+            <input id="correctoption" name="correctoption" class="form-control" ng-model="vm.correctoption" placeholder="Enter Correct option.." required> </input>
+        </div>
+    </div>
+
+    <div class="panel-footer text-right">
+        <button type="submit" class="btn btn-xs btn-success">Submit</button>
+        <button type="reset" class="btn btn-xs btn-default" ng-click="vm.onReset()">Reset</button>
+    </div>
+
+</form>
