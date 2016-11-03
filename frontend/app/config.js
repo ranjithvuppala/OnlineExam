@@ -1,7 +1,7 @@
 function appConfig($routeProvider) {
     $routeProvider
-        .when('/login', { template: '<login-page></login-page>' })
-        .when('/', { template: '<info></info>' })
+        .when('/', { template: '<login-page></login-page>' })
+        .when('/info', { template: '<info></info>' })
         .when('/redirect', { template: '<questions></questions>'})
         .when('/info1', { template: '<info1></info1>' })
         .otherwise({

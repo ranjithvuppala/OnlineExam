@@ -1,6 +1,8 @@
 function LoginBoxController(loginService,$location) {
     var vm = this;
 
+    //
+    //
     vm.$onInit = $onInit;
 
     vm.onSubmit = onUserDidSubmit;
@@ -13,6 +15,7 @@ function LoginBoxController(loginService,$location) {
         var parentControllerHasSetData = angular.isDefined(vm.data);
         vm.username = parentControllerHasSetData ? vm.data.username : '';
         vm.password  = parentControllerHasSetData ? vm.data.password  : '';
+        loginService.ClearHeaders();
     }
 
     function onUserDidSubmit(username, password) {
@@ -22,7 +25,8 @@ function LoginBoxController(loginService,$location) {
             //console.log(response.status);
             if(response.status == 200)
             {
-                    $location.path("/redirect");
+
+                $location.path("/redirect");
             }
             else{
 

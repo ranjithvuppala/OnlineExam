@@ -3,8 +3,11 @@ package tarun.bth.App.db.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.security.auth.Subject;
+import java.security.Principal;
 
-public class Login {
+
+public class Login implements Principal {
     @JsonProperty
     private Integer id;
 
@@ -17,6 +20,11 @@ public class Login {
     private String password;
 
     public Login(){}
+    public Login(String username, String password) {
+        this.username=username;
+        this.password=password;
+    }
+
 
     public Login(Integer id, String username, String password){
 
@@ -44,13 +52,23 @@ public class Login {
 
     public void setPassword(String password) { this.password = password;}
 
-    /*@Override
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public boolean implies(Subject subject) {
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "Login{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }*/
+    }
 
 }

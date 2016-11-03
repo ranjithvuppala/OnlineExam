@@ -22,8 +22,14 @@ public class ExamPaperResource {
         this.examPaperProcess = checkNotNull(examPaperProcess);
     }
 
+<<<<<<< HEAD
     @GET
     @Path("/all/")
+=======
+
+    @RolesAllowed("ADMIN")
+    @GET
+>>>>>>> 1fc339960e07781733b31613e8263323dde29757
     public List<ExamPaper> getAllQuestions() {
         return examPaperProcess.getAllQuestions();
     }

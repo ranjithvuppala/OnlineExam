@@ -7,6 +7,7 @@ function loginService($http,$interpolate) {
     return {
 
         verify: verify,
+        ClearHeaders : ClearHeaders
 
     };
 
@@ -21,4 +22,12 @@ function loginService($http,$interpolate) {
 
     }
 
+    function ClearHeaders(){
+
+        $http.defaults.headers.common.Authorization = 'Basic';
+    }
+
+
+
 }
+
