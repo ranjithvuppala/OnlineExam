@@ -5,6 +5,7 @@ import tarun.bth.App.db.entity.ExamPaper;
 import tarun.bth.App.db.entity.Login;
 import tarun.bth.App.process.ExamPaperProcess;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,14 +23,9 @@ public class ExamPaperResource {
         this.examPaperProcess = checkNotNull(examPaperProcess);
     }
 
-<<<<<<< HEAD
-    @GET
-    @Path("/all/")
-=======
 
     @RolesAllowed("ADMIN")
     @GET
->>>>>>> 1fc339960e07781733b31613e8263323dde29757
     public List<ExamPaper> getAllQuestions() {
         return examPaperProcess.getAllQuestions();
     }
