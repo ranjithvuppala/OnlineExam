@@ -8,9 +8,7 @@ import tarun.bth.App.db.entity.Login;
 
 import java.util.List;
 
-/**
- * Created by user on 27-10-2016.
- */
+
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface ExamPaperDAO {
     @SqlUpdate("CREATE TABLE IF NOT EXISTS ExamPaper(question_id int auto_increment primary key, question varchar(255), firstoption varchar(255), secondoption varchar(255),thirdoption varchar(255),fourthoption varchar(255), correctoption varchar(255))")

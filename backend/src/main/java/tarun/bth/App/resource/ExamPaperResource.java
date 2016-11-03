@@ -20,9 +20,9 @@ public class ExamPaperResource {
         this.examPaperDAO=examPaperDAO;
     }
 
-    @GET
 
-    //@Path("/all/")
+    @RolesAllowed("ADMIN")
+    @GET
     public List<ExamPaper> getAllQuestions() {
         return examPaperDAO.getAllQuestions();
     }
