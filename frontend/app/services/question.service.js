@@ -39,6 +39,6 @@ function questionService($http, $interpolate) {
             correctoption: correctoption
         };
 
-        return $http.put(note({ question_id: id }), data);
+        return $http.put(question({ question_id: id }), data);
     }
 }
