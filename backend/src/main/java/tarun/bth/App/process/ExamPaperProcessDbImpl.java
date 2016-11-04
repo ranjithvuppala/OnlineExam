@@ -35,6 +35,7 @@ public class ExamPaperProcessDbImpl implements ExamPaperProcess{
         examPaper.setSecondoption(updatedexamPaper.getSecondoption());
         examPaper.setThirdoption(updatedexamPaper.getThirdoption());
         examPaper.setFourthoption(updatedexamPaper.getFourthoption());
+        examPaper.setCorrectoption(updatedexamPaper.getCorrectoption());
         this.examPaperDAO.update(examPaper);
         return examPaper;
     }

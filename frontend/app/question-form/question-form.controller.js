@@ -10,7 +10,7 @@ function QuestionFormController(questionService) {
 
     function $onInit() {
         var parentControllerHasSetData = angular.isDefined(vm.data);
-        vm.quest = parentControllerHasSetData ? vm.data.quest : '';
+        vm.question = parentControllerHasSetData ? vm.data.question : '';
         vm.firstoption  = parentControllerHasSetData ? vm.data.firstoption  : '';
         vm.secondoption = parentControllerHasSetData ? vm.data.secondoption : '';
         vm.thirdoption  = parentControllerHasSetData ? vm.data.thirdoption  : '';
@@ -26,7 +26,7 @@ function QuestionFormController(questionService) {
     }
 
     function onUserDidReset() {
-        vm.quest = '';
+        vm.question = '';
         vm.firstoption = '';
         vm.secondoption= '';
         vm.thirdoption = '';
