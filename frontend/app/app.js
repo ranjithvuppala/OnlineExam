@@ -55,7 +55,11 @@ angular.module('app', ['ngRoute','ngCookies'])
         controllerAs: 'vm'
 
     })
-    .component('navigation1', { templateUrl: 'app/navigation/navigation1.html' })
+    .component('navigation1', {
+        templateUrl: 'app/navigation/navigation1.html',
+        controller: Navigation1Controller,
+        controllerAs: 'vm'
+    })
     .component('info1', { templateUrl: 'app/info/info1.html' })
 
 
@@ -65,10 +69,14 @@ angular.module('app', ['ngRoute','ngCookies'])
     .component('loginPage', {templateUrl: 'app/login-page/login-page.html' })
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
     .component('info', { templateUrl: 'app/info/info.html' })
-    //.component('questions',{ templateUrl: 'app/questions/questions.html'})
-    .config(appConfig);
+    .config(appConfig)
+    .run(run);
 
+function run($http,$cookies){
 
+    var authdata = $cookies.get('authdata')|| null;
 
-
-
+    if (authdata!= null){
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+    }
+}

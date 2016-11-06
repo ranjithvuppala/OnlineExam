@@ -8,11 +8,13 @@ import io.dropwizard.auth.basic.BasicCredentials;
 import tarun.bth.App.db.entity.Login;
 import tarun.bth.App.process.LoginProcess;
 
+
+import javax.ws.rs.ForbiddenException;
 import java.util.Optional;
 
 
 public class ExamAuthenticator implements Authenticator<BasicCredentials, Login> {
-    LoginProcess loginProcess;
+    private LoginProcess loginProcess;
 
     public ExamAuthenticator(LoginProcess loginProcess){
         this.loginProcess = loginProcess;

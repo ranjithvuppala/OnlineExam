@@ -19,12 +19,24 @@ public class Login implements Principal {
     @NotEmpty
     private String password;
 
+    @JsonProperty
+    @NotEmpty
+    private String role;
+
     public Login(){}
     public Login(String username, String password) {
         this.username=username;
         this.password=password;
     }
 
+
+
+  /*  public Login(String username, String password, String role) {
+        this.username=username;
+        this.password=password;
+        this.role = role;
+    }
+*/
 
     public Login(Integer id, String username, String password){
 
@@ -42,6 +54,8 @@ public class Login implements Principal {
 
     public String getPassword() { return password;}
 
+    public String getRole() { return role;}
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -51,6 +65,8 @@ public class Login implements Principal {
     }
 
     public void setPassword(String password) { this.password = password;}
+
+    public void setRole(String role) {this.role = role;}
 
     @Override
     public String getName() {

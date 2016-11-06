@@ -1,8 +1,6 @@
 function LoginBoxController(loginService,$location) {
     var vm = this;
 
-    //
-    //
     vm.$onInit = $onInit;
 
     vm.onSubmit = onUserDidSubmit;
@@ -15,7 +13,7 @@ function LoginBoxController(loginService,$location) {
         var parentControllerHasSetData = angular.isDefined(vm.data);
         vm.username = parentControllerHasSetData ? vm.data.username : '';
         vm.password  = parentControllerHasSetData ? vm.data.password  : '';
-        loginService.ClearHeaders();
+        //loginService.ClearHeaders();
     }
 
     function onUserDidSubmit(username, password) {
@@ -25,6 +23,7 @@ function LoginBoxController(loginService,$location) {
             //console.log(response.status);
             if(response.status == 200)
             {
+                loginService.SetHeaders(username,password);
 
                 $location.path("/redirect");
             }
@@ -42,18 +41,6 @@ function LoginBoxController(loginService,$location) {
          return loginService.verify(username, password)
             .then(test)
             .catch(test);
-
-
-            //.then($location.path('/redirect'))
-            //.then(vm.createExamController.$oninit)
-            // .then(onUserDidReset)
-             //.catch(test);
-            //console.log(res.$$state);
-            //console.log(res.$$state.name);
-            //.then(onUserDidReset)
-
-            //.catch(vm.showError);
-            //.then(onUserDidReset);
 
     }
 

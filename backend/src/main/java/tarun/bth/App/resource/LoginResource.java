@@ -29,13 +29,6 @@ public class LoginResource {
     }
 
 
-   @GET
-   @Path("/logout")
-   public String logout(@Auth Login login){
-       System.out.println(login);
-       return login.getUsername();
-   }
-
     @POST
     public Login verifyLogin( Login login) {
        return this.loginProcess.verify(login);
