@@ -470,3 +470,12 @@ INSERT INTO `user` VALUES (1,admin,admin) [42122-192]
 	at org.h2.server.web.WebThread.process(WebThread.java:164)
 	at org.h2.server.web.WebThread.run(WebThread.java:89)
 	at java.lang.Thread.run(Thread.java:745)
+2016-11-07 10:43:08 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+/* UserDAO.findUserByUsername */ SELECT * FROM user WHERE username= ? AND password = ? [42102-192]
+2016-11-07 10:51:07 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+/* UserDAO.findUserByUsername */ SELECT * FROM user WHERE username= ? AND password = ? [42102-192]
+2016-11-07 10:57:11 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+/* UserDAO.findUserByUsername */ SELECT * FROM user WHERE username= ? AND password = ? [42102-192]

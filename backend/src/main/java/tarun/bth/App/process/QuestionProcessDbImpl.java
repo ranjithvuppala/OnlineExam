@@ -35,6 +35,7 @@ public class QuestionProcessDbImpl implements QuestionProcess {
         question.setSecondoption(updatedexamPaper.getSecondoption());
         question.setThirdoption(updatedexamPaper.getThirdoption());
         question.setFourthoption(updatedexamPaper.getFourthoption());
+        question.setCorrectoption(updatedexamPaper.getCorrectoption());
         this.questionDAO.update(question);
         return question;
     }

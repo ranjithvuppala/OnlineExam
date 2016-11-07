@@ -54,7 +54,7 @@ public class App extends Application<ApplicationConfiguration>{
         questionDAO.createTable();
 
         //insert admin into table login
-        // userDAO.insertAdminDetails();
+         userDAO.insertAdminDetails();
 
 
         //Resource registration

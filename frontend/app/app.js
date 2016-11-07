@@ -1,5 +1,6 @@
 angular.module('app', ['ngRoute','ngCookies'])
     .factory('loginService',loginService)
+    .factory('loginInterceptor', loginInterceptor)
     .component('loginBox', {
         templateUrl: 'app/login-box/login-box.html',
         controller: LoginBoxController,

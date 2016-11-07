@@ -25,7 +25,7 @@ public class Question {
 
     public Question(){}
 
-    public Question(Integer question_id, String question, String firstoption, String secondoption, String thirdoption, String fourthoption){
+    public Question(Integer question_id, String question, String firstoption, String secondoption, String thirdoption, String fourthoption, String correctoption){
 
         this.question_id=question_id;
         this.question=question;
@@ -33,6 +33,7 @@ public class Question {
         this.secondoption=secondoption;
         this.thirdoption=thirdoption;
         this.fourthoption=fourthoption;
+        this.correctoption=correctoption;
     }
     public Integer getQuestion_id() {
         return question_id;
@@ -50,6 +51,8 @@ public class Question {
 
     public String getFourthoption() { return fourthoption;}
 
+    public String getCorrectoption() { return correctoption;}
+
     public void setQuestion_id(Integer question_id) {
         this.question_id = question_id;
     }
@@ -65,4 +68,7 @@ public class Question {
     public void setThirdoption(String thirdoption) { this.thirdoption = thirdoption;}
 
     public void setFourthoption(String fourthoption) { this.fourthoption = fourthoption;}
+
+    public void setCorrectoption(String correctoption) { this.correctoption = correctoption;}
+
 }

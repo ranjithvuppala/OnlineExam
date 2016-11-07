@@ -4,12 +4,14 @@ import tarun.bth.App.db.entity.Question;
 import tarun.bth.App.db.entity.QuestionName;
 import tarun.bth.App.process.QuestionProcess;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+@RolesAllowed("ADMIN")
 @Path("QuestionPaper")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -21,7 +23,6 @@ public class QuestionResource {
     }
 
     @GET
-    @Path("/all/")
     public List<Question> getAllQuestions() {
         return questionProcess.getAllQuestions();
     }

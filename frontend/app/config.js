@@ -1,4 +1,7 @@
-function appConfig($routeProvider) {
+function appConfig($routeProvider,$httpProvider) {
+
+
+        console.log("sdzgdrh");
     $routeProvider
         .when('/', {template: '<login-page></login-page>'})
         .when('/info', {template: '<info></info>'})
@@ -7,6 +10,7 @@ function appConfig($routeProvider) {
         .otherwise({
             redirectTo: '/'
         })
+    $httpProvider.interceptors.push('loginI');
 }
 
 

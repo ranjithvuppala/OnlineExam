@@ -11,17 +11,17 @@ import java.util.List;
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface UserDAO {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS login(id int auto_increment primary key, username varchar(12), password varchar(12), role varchar(12))")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS user(id int auto_increment primary key, username varchar(12), password varchar(12), role varchar(12))")
     public void createTable();
 
-    //@SqlUpdate("Insert into login values(1,'admin','admin')")
-    //public void insertAdminDetails();
+    @SqlUpdate("Merge into user values(0,'admin','admin','adm')")
+    public void insertAdminDetails();
 
-    @SqlQuery("SELECT * FROM login;")
+    @SqlQuery("SELECT * FROM user;")
     public List<User> getAllLogin();
 
 
-    @SqlQuery("SELECT * FROM login WHERE id = :id")
+    @SqlQuery("SELECT * FROM user WHERE id = :id")
     public User findUserById(@Bind("id") int id);
 
     @SqlQuery("SELECT * FROM user WHERE username= :username AND password = :password")
