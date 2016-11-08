@@ -8,8 +8,8 @@ function appConfig($routeProvider,$httpProvider) {
         .when('/info1', {template: '<info1></info1>'})
         .otherwise({
             redirectTo: '/'
-        });
 
+        })
 }
 
 
