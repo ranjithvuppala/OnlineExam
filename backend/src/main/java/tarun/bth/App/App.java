@@ -15,13 +15,17 @@ import tarun.bth.App.auth.ExamAuthenticator;
 import tarun.bth.App.auth.ExamAuthorizer;
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.UserDAO;
+import tarun.bth.App.db.ExamDAO;
 import tarun.bth.App.db.entity.User;
 import tarun.bth.App.process.QuestionProcess;
 import tarun.bth.App.process.QuestionProcessDbImpl;
+import tarun.bth.App.process.ExamProcess;
+import tarun.bth.App.process.ExamProcessDbImpl;
 import tarun.bth.App.process.UserProcess;
 import tarun.bth.App.process.UserProcessDbImpl;
 import tarun.bth.App.resource.QuestionResource;
 import tarun.bth.App.resource.UserResource;
+import tarun.bth.App.resource.ExamResource;
 
 
 public class App extends Application<ApplicationConfiguration>{
@@ -37,21 +41,23 @@ public class App extends Application<ApplicationConfiguration>{
         // data access objects
         final UserDAO userDAO = dbi.onDemand(UserDAO.class);
         final QuestionDAO questionDAO = dbi.onDemand(QuestionDAO.class);
-
+        final ExamDAO examDAO = dbi.onDemand(ExamDAO.class);
         // processes
         QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO);
 
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
 
-
+        ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
 
         // resources
         //UserResource loginResource = new UserResource()
         QuestionResource questionResource = new QuestionResource(questionProcess);
+        ExamResource examResource = new ExamResource(examProcess);
 
         // tables
         userDAO.createTable();
         questionDAO.createTable();
+        examDAO.createTable();
 
         //insert admin into table login
          userDAO.insertAdminDetails();
@@ -60,7 +66,7 @@ public class App extends Application<ApplicationConfiguration>{
         //Resource registration
         environment.jersey().register(questionResource);
         environment.jersey().register(new UserResource(userProcess));
-
+        environment.jersey().register(examResource);
 
 
         //Authentication and Authorization

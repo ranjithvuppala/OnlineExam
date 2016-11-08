@@ -12,7 +12,7 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 @RolesAllowed("ADMIN")
-@Path("QuestionPaper")
+@Path("QuestionPaperProcess")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class QuestionResource {

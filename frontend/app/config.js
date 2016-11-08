@@ -10,7 +10,7 @@ function appConfig($routeProvider,$httpProvider) {
         .otherwise({
             redirectTo: '/'
         })
-    $httpProvider.interceptors.push('loginI');
+    $httpProvider.interceptors.push('loginInterceptor');
 }
 
 
