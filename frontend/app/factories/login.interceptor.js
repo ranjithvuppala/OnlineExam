@@ -1,25 +1,28 @@
-function loginInterceptor() {
-
-    console.log("test")
+function loginInterceptor($location) {
     return {
         request: function(config) {
-            console.log(config);
             return config;
         },
 
-        requestError: function(config) {
-            console.log(config);
-            return config;
-        },
+        requestError: authRedirect ,
 
         response: function(res) {
-            console.log(res);
             return res;
         },
 
-        responseError: function(res) {
-            console.log(res);
-            return res;
+        responseError: authRedirect
+
+    };
+
+    function authRedirect(response){
+
+        if(response.status === 401|| response.status === 403)
+        {
+            $location.path('/');
+            return response;
         }
+        return response;
+
     }
 }
+

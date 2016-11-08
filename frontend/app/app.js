@@ -15,10 +15,6 @@ angular.module('app', ['ngRoute','ngCookies'])
 
     })
 
-
-
-
-
     //.......................................................................
     .factory('questionService', questionService )
     .component('questionForm', {
@@ -70,6 +66,12 @@ angular.module('app', ['ngRoute','ngCookies'])
     .component('loginPage', {templateUrl: 'app/login-page/login-page.html' })
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
     .component('info', { templateUrl: 'app/info/info.html' })
+    .component('dualSelect',{
+        templateUrl: 'app/dual-select/dual-select.html',
+        controller : DualSelectController,
+        controllerAs : 'vm'
+    })
+
     .config(appConfig)
     .run(run);
 

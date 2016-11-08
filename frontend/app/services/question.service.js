@@ -5,11 +5,16 @@ function questionService($http, $interpolate) {
         list: list,
         create: create,
         destroy: destroy,
-        update: update
+        update: update,
+        listquestions: listquestions
     };
 
     function list() {
         return $http.get(question());
+    }
+
+    function listquestions() {
+        return $http.get(question({question_id: "onlyquestions"}));
     }
 
     function create(quest, firstoption,secondoption,thirdoption,fourthoption,correctoption) {
