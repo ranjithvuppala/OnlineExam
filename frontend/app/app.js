@@ -1,6 +1,7 @@
 angular.module('app', ['ngRoute','ngCookies'])
     .factory('loginService',loginService)
     .factory('loginInterceptor', loginInterceptor)
+    .factory('examService', examService)
     .component('loginBox', {
         templateUrl: 'app/login-box/login-box.html',
         controller: LoginBoxController,
@@ -71,6 +72,8 @@ angular.module('app', ['ngRoute','ngCookies'])
         controller : DualSelectController,
         controllerAs : 'vm'
     })
+
+    .component('exams',{templateUrl: 'app/exams/exams.html'})
 
     .config(appConfig)
     .run(run);

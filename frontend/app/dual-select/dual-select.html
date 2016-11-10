@@ -1,6 +1,7 @@
 <div class="row">
-    <select class="col-xs-5" ng-model="vm.leftSelect" multiple ng-options="option.question for option in vm.left track by option.question_id">{{option.question}}</option></select>
-    <div class="col-xs-1 text-center">
+    <div class="col-xs-1"></div>
+    <select class="col-xs-4" ng-model="vm.leftSelect" multiple ng-options="option.question for option in vm.left track by option.question_id"><option>{{option.question}}</option></select>
+    <div class="col-xs-2 text-center">
         <div class="row">
             <div class="col-xs-12">
                 <button class = "btn btn-default" ng-click="vm.transfer(vm.leftSelect, vm.left,vm.right)"><b>&rtrif;</b></button>
@@ -15,7 +16,13 @@
             </div>
         </div>
     </div>
-    <select class="col-xs-5" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id">{{option.question}}</option></select>
+    <select class="col-xs-4" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id"><option>{{option.question}}</option></select>
+</div>
+<div class="row"><div class="col-xs-12"></div></div>
+<div class="row">
+    <div class="col-xs-11">
+        <button type="submit" class="btn btn-default btn-info pull-right" ng-click="vm.onSubmit(vm.right)">Create</button>
+    </div>
 </div>
 
-{{vm.leftSelect}}
+

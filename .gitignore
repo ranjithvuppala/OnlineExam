@@ -2,3 +2,5 @@ frontend/.idea/*
 backend/.gradle/*
 backend/.idea/*
 backend/out/*
+backend/appdb.mv
+backend/appdb.trace

@@ -1,8 +1,5 @@
 package tarun.bth.App.resource;
 
-/**
- * Created by souji on 08/11/16.
- */
 import tarun.bth.App.db.entity.Exam;
 import tarun.bth.App.process.ExamProcess;
 
@@ -13,7 +10,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-//@RolesAllowed("ADMIN")
+@RolesAllowed("ADMIN")
 @Path("ExamProcess")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

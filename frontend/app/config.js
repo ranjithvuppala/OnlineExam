@@ -6,6 +6,7 @@ function appConfig($routeProvider,$httpProvider) {
         .when('/info', {template: '<info></info>'})
         .when('/redirect', {template: '<questions></questions>'})
         .when('/info1', {template: '<info1></info1>'})
+        .when('/createExam',{template: '<exams></exams>'})
         .otherwise({
             redirectTo: '/'
 

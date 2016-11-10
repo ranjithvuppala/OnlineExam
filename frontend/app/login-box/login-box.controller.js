@@ -36,8 +36,6 @@ function LoginBoxController(loginService,$location) {
 
         };
 
-
-
          return loginService.verify(username, password)
             .then(test)
             .catch(test);
