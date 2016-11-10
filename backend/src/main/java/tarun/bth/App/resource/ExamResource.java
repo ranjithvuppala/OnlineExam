@@ -25,7 +25,6 @@ public class ExamResource {
     }
 
     @GET
-    @Path("/selectedquestions/")
     public List<Exam> getSelectedQuestions() {
         return examProcess.getSelectedQuestions();
     }
