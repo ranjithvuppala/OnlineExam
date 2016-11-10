@@ -24,7 +24,7 @@ public interface ExamDAO {
     @SqlQuery("SELECT * FROM `Exam` WHERE exam_id = :exam_id")
     public Exam findExamById(@Bind("exam_id") int exam_id);
 
-    @SqlUpdate("UPDATE `Exam` set exam=  firstquestion_id= :firstquestion_id,secondquestion_id= :secondquestion_id,thirdquestion_id= :thirdquestion_id,fourthquestion_id= :fourthquestion_id, fifthquestion_id= :fifthoption WHERE exam_id = :exam_id")
+    @SqlUpdate("UPDATE `Exam` set firstquestion_id= :firstquestion_id,secondquestion_id= :secondquestion_id,thirdquestion_id= :thirdquestion_id,fourthquestion_id= :fourthquestion_id, fifthquestion_id= :fifthoption WHERE exam_id = :exam_id")
     int update(@BindBean Exam exam);
 
     @SqlUpdate("DELETE FROM `Exam` WHERE exam_id = :exam_id")
