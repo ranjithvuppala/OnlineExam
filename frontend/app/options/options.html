@@ -1,0 +1,20 @@
+
+<div class="container">
+    <navigation1 class="row"></navigation1>
+
+    <div class="row">
+        <option-form class="col-xs-12"></option-form>
+
+        <div class="col-xs-12 text-center" ng-if="!vm.hasOptions()">
+            <div class="alert alert-info" role="alert">
+                <h4>Oh no!</h4>
+                <p>There are no options yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <option class="col-xs-6" ng-repeat="option in vm.options" data="option"></option>
+    </div>
+</div>
+

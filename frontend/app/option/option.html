@@ -1,0 +1,17 @@
+<div ng-switch on="vm.isEditingOption">
+    <div class="panel panel-default" ng-switch-when="false">
+        <div class="panel-heading">
+            <h3 class="panel-title pull-left">{{vm.data.option}}</h3>
+            <div class="pull-right">
+                <a ng-click="vm.editOption()" class="btn btn-xs btn-info">Edit</a>
+                <a ng-click="vm.removeOption()" class="btn btn-xs btn-danger">Remove</a>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+    <option-form ng-switch-when="true" data="vm.data" on-submit="vm.submitEditedOption" on-reset="vm.resetEditedOption"></option-form>
+
+</div>

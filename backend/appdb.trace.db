@@ -764,3 +764,6 @@ org.h2.jdbc.JdbcSQLException: Unknown data type: ","; SQL statement:
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:497)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-08 19:24:36 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: Writing to cache:nio:/Users/souji/OnlineExam/backend/appdb.mv.db failed; length 4096 at 28672 [1.4.192/2]" [50000-192]
+	at org.h2.message.DbExcepti
