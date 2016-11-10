@@ -18,6 +18,9 @@ public class Exam {
 
     private Integer fifthquestion_id;
 
+
+
+
     public Exam(){}
 
     public Exam(Integer exam_id, Integer firstquestion_id, Integer secondquestion_id, Integer thirdquestion_id, Integer fourthquestion_id, Integer fifthquestion_id){
@@ -29,6 +32,7 @@ public class Exam {
         this.thirdquestion_id=thirdquestion_id;
         this.fourthquestion_id=fourthquestion_id;
         this.fifthquestion_id=fifthquestion_id;
+
     }
     public Integer getExam_id() {
         return exam_id;
@@ -38,6 +42,7 @@ public class Exam {
     public Integer getThirdquestion_id() { return thirdquestion_id;}
     public Integer getFourthquestion_id() { return fourthquestion_id;}
     public Integer getFifthquestion_id() { return fifthquestion_id;}
+
 
    // public String getExamPaper() {return exam;}
 
@@ -57,5 +62,6 @@ public class Exam {
     public void setFourthquestion_id(Integer fourthquestion_id) { this.fourthquestion_id = fourthquestion_id;}
 
     public void setFifthquestion_id(Integer fifthquestion_id) { this.fifthquestion_id = fifthquestion_id;}
+
 
 }

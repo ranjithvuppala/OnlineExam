@@ -1,12 +1,9 @@
 package tarun.bth.App.db;
 
-/**
- * Created by souji on 10/11/16.
- */
-
 import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
+import tarun.bth.App.db.entity.Option;
 
 import java.util.List;
 
