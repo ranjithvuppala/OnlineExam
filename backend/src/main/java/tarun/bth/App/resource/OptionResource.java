@@ -27,9 +27,9 @@ public class OptionResource {
         return this.optionProcess.create(option);
     }
 
-        @GET
+    @GET
        // @Path("/onlyoptions/")
-        public List<Option> getAllOptions() {
+    public List<Option> getAllOptions() {
             return optionProcess.getAllOptions();
         }
 

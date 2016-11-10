@@ -1,6 +1,6 @@
 
 function optionService($http, $interpolate) {
-    var option = $interpolate('/api/Option/{{option_id}}');
+    var option1 = $interpolate('/api/Option/{{option_id}}');
 
     return {
         list: list,
@@ -10,7 +10,7 @@ function optionService($http, $interpolate) {
     };
 
     function list() {
-        return $http.get(option());
+        return $http.get(option1());
     }
 
     function create(option) {
@@ -18,11 +18,11 @@ function optionService($http, $interpolate) {
             option:option
         };
 
-        return $http.post(option(), data);
+        return $http.post(option1(), data);
     }
 
     function destroy(option_id) {
-        return $http.delete(option({ option_id: option_id }));
+        return $http.delete(option1({ option_id: option_id }));
     }
 
     function update(id,option) {
@@ -30,6 +30,6 @@ function optionService($http, $interpolate) {
             option:option
         };
 
-        return $http.put(option({ option_id: id }), data);
+        return $http.put(option1({ option_id: id }), data);
     }
 }

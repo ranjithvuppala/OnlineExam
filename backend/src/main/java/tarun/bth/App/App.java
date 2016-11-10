@@ -16,13 +16,10 @@ import tarun.bth.App.auth.ExamAuthorizer;
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.UserDAO;
 import tarun.bth.App.db.ExamDAO;
+import tarun.bth.App.db.OptionDAO;
 import tarun.bth.App.db.entity.User;
-import tarun.bth.App.process.QuestionProcess;
-import tarun.bth.App.process.QuestionProcessDbImpl;
-import tarun.bth.App.process.ExamProcess;
-import tarun.bth.App.process.ExamProcessDbImpl;
-import tarun.bth.App.process.UserProcess;
-import tarun.bth.App.process.UserProcessDbImpl;
+import tarun.bth.App.process.*;
+import tarun.bth.App.resource.OptionResource;
 import tarun.bth.App.resource.QuestionResource;
 import tarun.bth.App.resource.UserResource;
 import tarun.bth.App.resource.ExamResource;
@@ -42,22 +39,26 @@ public class App extends Application<ApplicationConfiguration>{
         final UserDAO userDAO = dbi.onDemand(UserDAO.class);
         final QuestionDAO questionDAO = dbi.onDemand(QuestionDAO.class);
         final ExamDAO examDAO = dbi.onDemand(ExamDAO.class);
+        final OptionDAO optionDAO = dbi.onDemand(OptionDAO.class);
         // processes
         QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO);
 
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
 
         ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
+        OptionProcess optionProcess = new OptionProcessDbImpl(optionDAO);
 
         // resources
         //UserResource loginResource = new UserResource()
         QuestionResource questionResource = new QuestionResource(questionProcess);
         ExamResource examResource = new ExamResource(examProcess);
+        OptionResource optionResource = new OptionResource(optionProcess);
 
         // tables
         userDAO.createTable();
         questionDAO.createTable();
         examDAO.createTable();
+        optionDAO.createTable();
 
         //insert admin into table login
          userDAO.insertAdminDetails();
@@ -67,6 +68,7 @@ public class App extends Application<ApplicationConfiguration>{
         environment.jersey().register(questionResource);
         environment.jersey().register(new UserResource(userProcess));
         environment.jersey().register(examResource);
+        environment.jersey().register(optionResource);
 
 
         //Authentication and Authorization

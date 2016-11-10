@@ -53,6 +53,52 @@ angular.module('app', ['ngRoute','ngCookies'])
         controllerAs: 'vm'
 
     })
+
+
+    //........................................................................
+
+    .factory('optionService', optionService )
+    .component('optionForm', {
+        templateUrl: 'app/option-form/option-form.html',
+        controller: OptionFormController,
+        controllerAs: 'vm',
+
+        require: {
+            optionsController: '^?options'
+        },
+
+        bindings: {
+            data: '<',
+            onSubmit: '<',
+            onReset: '<'
+        }
+    })
+    .component('option', {
+        templateUrl: 'app/option/option.html',
+        controller: OptionController,
+        controllerAs: 'vm',
+
+        require: {
+            optionsController: '^options'
+        },
+
+        bindings: {
+            data: '<'
+        }
+
+    })
+    .component('options', {
+        templateUrl: 'app/options/options.html',
+        controller: OptionsController,
+        controllerAs: 'vm'
+
+    })
+
+
+    //...........................................................................
+
+
+
     .component('navigation1', {
         templateUrl: 'app/navigation/navigation1.html',
         controller: Navigation1Controller,
