@@ -13,16 +13,10 @@ import org.h2.tools.Server;
 import org.skife.jdbi.v2.DBI;
 import tarun.bth.App.auth.ExamAuthenticator;
 import tarun.bth.App.auth.ExamAuthorizer;
-import tarun.bth.App.db.QuestionDAO;
-import tarun.bth.App.db.UserDAO;
-import tarun.bth.App.db.ExamDAO;
-import tarun.bth.App.db.ChoiceDAO;
+import tarun.bth.App.db.*;
 import tarun.bth.App.db.entity.User;
 import tarun.bth.App.process.*;
-import tarun.bth.App.resource.ChoiceResource;
-import tarun.bth.App.resource.QuestionResource;
-import tarun.bth.App.resource.UserResource;
-import tarun.bth.App.resource.ExamResource;
+import tarun.bth.App.resource.*;
 
 
 public class App extends Application<ApplicationConfiguration>{
@@ -40,25 +34,28 @@ public class App extends Application<ApplicationConfiguration>{
         final QuestionDAO questionDAO = dbi.onDemand(QuestionDAO.class);
         final ExamDAO examDAO = dbi.onDemand(ExamDAO.class);
         final ChoiceDAO choiceDAO = dbi.onDemand(ChoiceDAO.class);
+        final QuestionChoiceDAO questionChoiceDAO=dbi.onDemand(QuestionChoiceDAO.class);
+
         // processes
         QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO);
-
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
-
         ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
         ChoiceProcess choiceProcess = new ChoiceProcessDbImpl(choiceDAO);
+        QuestionChoiceProcess questionChoiceProcess = new QuestionChoiceDbImpl(questionChoiceDAO);
 
         // resources
         //UserResource loginResource = new UserResource()
         QuestionResource questionResource = new QuestionResource(questionProcess);
         ExamResource examResource = new ExamResource(examProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
+        QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
 
         // tables
         userDAO.createTable();
         questionDAO.createTable();
         examDAO.createTable();
         choiceDAO.createTable();
+        questionChoiceDAO.createTable();
 
         //insert admin into table login
          userDAO.insertAdminDetails();
@@ -69,6 +66,7 @@ public class App extends Application<ApplicationConfiguration>{
         environment.jersey().register(new UserResource(userProcess));
         environment.jersey().register(examResource);
         environment.jersey().register(choiceResource);
+        environment.jersey().register(questionChoiceResource);
 
 
         //Authentication and Authorization
@@ -79,6 +77,7 @@ public class App extends Application<ApplicationConfiguration>{
                         .setRealm("SUPER SECRET STUFF")
                         .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
+
         //If you want to use @Auth to inject a custom Principal type into your resource
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
     }
