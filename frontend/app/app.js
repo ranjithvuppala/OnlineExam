@@ -57,14 +57,14 @@ angular.module('app', ['ngRoute','ngCookies'])
 
     //........................................................................
 
-    .factory('optionService', optionService )
-    .component('optionForm', {
-        templateUrl: 'app/option-form/option-form.html',
-        controller: OptionFormController,
+    .factory('choiceService', choiceService )
+    .component('choiceForm', {
+        templateUrl: 'app/choice-form/choice-form.html',
+        controller: ChoiceFormController,
         controllerAs: 'vm',
 
         require: {
-            optionsController: '^?options'
+            choicesController: '^?choices'
         },
 
         bindings: {
@@ -73,13 +73,13 @@ angular.module('app', ['ngRoute','ngCookies'])
             onReset: '<'
         }
     })
-    .component('option', {
-        templateUrl: 'app/option/option.html',
-        controller: OptionController,
+    .component('choice', {
+        templateUrl: 'app/choice/choice.html',
+        controller: ChoiceController,
         controllerAs: 'vm',
 
         require: {
-            optionsController: '^options'
+            choicesController: '^choices'
         },
 
         bindings: {
@@ -87,9 +87,9 @@ angular.module('app', ['ngRoute','ngCookies'])
         }
 
     })
-    .component('options', {
-        templateUrl: 'app/options/options.html',
-        controller: OptionsController,
+    .component('choices', {
+        templateUrl: 'app/choices/choices.html',
+        controller: ChoicesController,
         controllerAs: 'vm'
 
     })

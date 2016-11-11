@@ -3,18 +3,17 @@
     <navigation1 class="row"></navigation1>
 
     <div class="row">
-        <option-form class="col-xs-12"></option-form>
+        <choice-form class="col-xs-12"></choice-form>
 
-        <div class="col-xs-12 text-center" ng-if="!vm.hasOptions()">
+        <div class="col-xs-12 text-center" ng-if="!vm.hasChoices()">
             <div class="alert alert-info" role="alert">
                 <h4>Oh no!</h4>
-                <p>There are no options yet.</p>
+                <p>There are no choices yet.</p>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <option class="col-xs-6" ng-repeat="option in vm.options" data="option"></option>
+        <choice class="col-xs-6" ng-repeat="choice in vm.choices" data="choice"></choice>
     </div>
 </div>
-

@@ -1,4 +1,4 @@
-function OptionFormController(optionService) {
+function ChoiceFormController(choiceService) {
     var vm = this;
 
     vm.$onInit = $onInit;
@@ -10,20 +10,20 @@ function OptionFormController(optionService) {
 
     function $onInit() {
         var parentControllerHasSetData = angular.isDefined(vm.data);
-        vm.option = parentControllerHasSetData ? vm.data.option : '';
+        vm.choice = parentControllerHasSetData ? vm.data.choice : '';
     }
 
-    function onUserDidSubmit(option) {
-        return optionService.create(option)
-            .then(vm.optionsController.refreshOptions)
+    function onUserDidSubmit(choice) {
+        return choiceService.create(choice)
+            .then(vm.choicesController.refreshChoices)
             .then(onUserDidReset)
             .catch(vm.showError);
     }
 
     function onUserDidReset() {
-        vm.option = '';
-        vm.optionForm.$setPristine();
-        vm.optionForm.$setUntouched();
+        vm.choice = '';
+        vm.choiceForm.$setPristine();
+        vm.choiceForm.$setUntouched();
     }
 
     function showError(response) {
