@@ -3,11 +3,10 @@ package tarun.bth.App.resource;
 import tarun.bth.App.db.entity.ExamQuestion;
 import tarun.bth.App.process.ExamQuestionProcess;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -23,8 +22,14 @@ public class ExamQuestionResource {
     }
 
     @POST
-    public ExamQuestion createQuestionChoice(ExamQuestion examQuestion) {
+    public int createQuestionChoice(List<ExamQuestion> examQuestion) {
         return this.examQuestionProcess.create(examQuestion);
+    }
+
+    @GET
+    @Path("/{exam_id}")
+    public List<ExamQuestion> getExamQuestion(@PathParam("exam_id") int exam_id) {
+        return this.examQuestionProcess.find(exam_id);
     }
 
 

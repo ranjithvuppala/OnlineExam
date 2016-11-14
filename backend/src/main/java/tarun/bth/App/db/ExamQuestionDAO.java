@@ -5,6 +5,8 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import tarun.bth.App.db.entity.ExamQuestion;
 
+import java.util.List;
+
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface ExamQuestionDAO {
 
@@ -20,7 +22,7 @@ public interface ExamQuestionDAO {
 
     @SqlQuery("SELECT * FROM `ExamQuestion` WHERE exam_id = :exam_id")
     @GetGeneratedKeys
-    public ExamQuestion findExamQuestionById(@Bind("exam_id") int exam_id);
+    List<ExamQuestion> findExamQuestionById(@Bind("exam_id") int exam_id);
 
     //@SqlQuery("SELECT * FROM `ExamQuestion` WHERE exam_id = :exam_id")
     //public ExamQuestion findExamQuestionById(@Bind("exam_id") int exam_id);

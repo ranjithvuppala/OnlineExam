@@ -3,6 +3,8 @@ package tarun.bth.App.process;
 import tarun.bth.App.db.ExamQuestionDAO;
 import tarun.bth.App.db.entity.ExamQuestion;
 
+import java.util.List;
+
 
 public class ExamQuestionDbImpl implements ExamQuestionProcess {
     private ExamQuestionDAO examQuestionDAO;
@@ -12,7 +14,19 @@ public class ExamQuestionDbImpl implements ExamQuestionProcess {
     }
 
     @Override
-    public ExamQuestion create(ExamQuestion examQuestion) {
-        return this.examQuestionDAO.findExamQuestionById(this.examQuestionDAO.create(examQuestion));
+    public int create(List<ExamQuestion> examQuestion){
+
+        for(ExamQuestion i : examQuestion){
+
+            this.examQuestionDAO.create(i);
+
+        }
+
+        return(0);
+    }
+
+    @Override
+    public List<ExamQuestion> find(int exam_id) {
+        return this.examQuestionDAO.findExamQuestionById(exam_id);
     }
 }
