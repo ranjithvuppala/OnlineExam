@@ -1,15 +1,27 @@
 <div ng-switch on="vm.isEditingChoice">
-    <div class="panel panel-default" ng-switch-when="false">
-        <div class="panel-heading">
-            <h3 class="panel-title pull-left">{{vm.data.choice}}</h3>
-            <div class="pull-right">
-                <a ng-click="vm.editChoice()" class="btn btn-xs btn-info">Edit</a>
-                <a ng-click="vm.removeChoice()" class="btn btn-xs btn-danger">Remove</a>
-            </div>
+
+
+            <li class="list-group-item" ng-switch-when="false">
+
+                {{vm.data.choice}}
+
+                <span class = "tag tag-default float-xs-right pull-right">
+                    <a ng-click="vm.editChoice()" class="btn btn-xs btn-info">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a ng-click="vm.removeChoice()" class="btn btn-xs btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span>
+
+                    </a>
+
+                </span>
+
+            </li>
+
 
             <div class="clearfix"></div>
-        </div>
-    </div>
+
+
 
     <choice-form ng-switch-when="true" data="vm.data" on-submit="vm.submitEditedChoice" on-reset="vm.resetEdited"></choice-form>
 

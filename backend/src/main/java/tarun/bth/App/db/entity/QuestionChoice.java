@@ -1,8 +1,6 @@
 package tarun.bth.App.db.entity;
 
-/**
- * Created by user on 11-11-2016.
- */
+
 public class QuestionChoice {
 
     private Integer question_id;

@@ -18,12 +18,14 @@ function ChoiceController(choiceService) {
     }
 
     function removeChoice() {
-        choiceService.destroy(vm.data.id)
+        console.log(vm.data);
+        choiceService.destroy(vm.data.choice_id)
             .then(vm.choicesController.refreshChoices);
     }
 
     function submitEditedChoice(choice) {
-        return choiceService.update(vm.data.id, choice)
+        console.log(vm.data);
+        return choiceService.update(vm.data.choice_id, choice)
             .then(vm.choicesController.refreshChoices)
             .then(vm.resetEditedChoice)
             .catch(vm.showError);

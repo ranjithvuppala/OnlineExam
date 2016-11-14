@@ -18,7 +18,6 @@ function loginInterceptor($location) {
 
         if(response.status === 401|| response.status === 403)
         {
-            $location.path('/');
             return response;
         }
         return response;

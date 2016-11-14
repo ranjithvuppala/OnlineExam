@@ -33,14 +33,14 @@ public class ChoiceResource {
     }
 
     @DELETE
-    @Path("/{id}")
-    public void deleteQuestion(@PathParam("id") int id) {
-        this.choiceProcess.delete(id);
+    @Path("/{choice_id}")
+    public void deleteQuestion(@PathParam("choice_id") int choice_id) {
+        this.choiceProcess.delete(choice_id);
     }
     @PUT
-    @Path("/{id}")
-    public Choice updateChoice(@PathParam("id") int id, Choice choice){
-        return this.choiceProcess.update(id, choice);
+    @Path("/{choice_id}")
+    public Choice updateChoice(@PathParam("choice_id") int choice_id, Choice choice){
+        return this.choiceProcess.update(choice_id, choice);
     }
 
 

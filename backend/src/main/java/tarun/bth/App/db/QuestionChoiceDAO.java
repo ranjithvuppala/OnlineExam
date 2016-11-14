@@ -1,15 +1,17 @@
 package tarun.bth.App.db;
 
 import org.skife.jdbi.v2.sqlobject.*;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
+import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import tarun.bth.App.db.entity.QuestionChoice;
 
-/**
- * Created by user on 11-11-2016.
- */
+import java.util.List;
+
+@RegisterMapperFactory(BeanMapperFactory.class)
 public interface QuestionChoiceDAO {
 
     @SqlUpdate("CREATE TABLE IF NOT EXISTS QuestionChoice(question_id int, choice_id int, UNIQUE(question_id,choice_id))")
-    public void createTable();
+    void createTable();
 
     @SqlUpdate("INSERT INTO `QuestionChoice` VALUES(:question_id,:choice_id )")
     @GetGeneratedKeys
@@ -19,7 +21,7 @@ public interface QuestionChoiceDAO {
     int delete(@Bind("choice_id") int choice_id);
 
     @SqlQuery("SELECT * FROM `QuestionChoice` WHERE question_id = :question_id")
-    public QuestionChoice findQuestionChoiceById(@Bind("question_id") int question_id);
+    List<QuestionChoice> findQuestionChoiceById(@Bind("question_id") int question_id);
 
 
 }

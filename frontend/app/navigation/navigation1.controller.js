@@ -5,7 +5,6 @@ function Navigation1Controller(loginService,$location){
 
 /*    function $onInit(){}*/
     function onLogout(){
-
         loginService.ClearHeaders();
         $location.path("/");
     }

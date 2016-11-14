@@ -2,18 +2,28 @@
 <div class="container">
     <navigation1 class="row"></navigation1>
 
-    <div class="row">
-        <choice-form class="col-xs-12"></choice-form>
+    <div class="row text-center">
 
-        <div class="col-xs-12 text-center" ng-if="!vm.hasChoices()">
-            <div class="alert alert-info" role="alert">
-                <h4>Oh no!</h4>
-                <p>There are no choices yet.</p>
+        <h4>Enter your Choices </h4>
+
+        <div class="row">
+            <choice-form class="col-xs-12"></choice-form>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center" ng-if="!vm.hasChoices()">
+                <div class="alert alert-info" role="alert">
+                    <h4>Oh no!</h4>
+                    <p>There are no choices yet.</p>
+                </div>
+            </div>
+            <div class="col-xs-12" ng-if="vm.hasChoices()">
+                <h4>Entered Choices</h4>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <choice class="col-xs-6" ng-repeat="choice in vm.choices" data="choice"></choice>
+        <choice class="col-xs-4" ng-repeat="choice in vm.choices" data="choice"></choice>
     </div>
 </div>

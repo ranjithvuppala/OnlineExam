@@ -1,13 +1,18 @@
-<form name="vm.choiceForm" ng-submit="vm.onSubmit(vm.choice)" class="panel panel-default">
-    <div class="panel-body">
-        <div class="form-group col-xs-12">
-            <label for="choice">Choice</label>
+
+
+<form name="vm.choiceForm" ng-submit="vm.onSubmit(vm.choice)">
+
+        <div class="form-inline">
+
             <input id="choice" name="choice" class="form-control" ng-model="vm.choice" type="text" placeholder="Enter choice....." autocomplete="off" required> </input>
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-ok"></span>
+
+            </button>
+            <button type="reset" class="btn btn-default" ng-click="vm.onReset()">
+                <span class="glyphicon glyphicon-refresh"></span>
+
+            </button>
         </div>
 
-        <div class="panel-footer text-right">
-            <button type="submit" class="btn btn-xs btn-success">Submit</button>
-            <button type="reset" class="btn btn-xs btn-default" ng-click="vm.onReset()">Reset</button>
-        </div>
-    </div>
 </form>

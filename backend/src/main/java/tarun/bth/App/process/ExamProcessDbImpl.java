@@ -1,8 +1,6 @@
 package tarun.bth.App.process;
 
-/**
- * Created by souji on 08/11/16.
- */
+
 import tarun.bth.App.db.ExamDAO;
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.entity.Exam;

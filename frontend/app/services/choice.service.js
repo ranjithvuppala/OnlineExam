@@ -1,6 +1,6 @@
 
 function choiceService($http, $interpolate) {
-    var choice1 = $interpolate('/api/Choice/{{id}}');
+    var choice1 = $interpolate('/api/Choice/{{choice_id}}');
 
     return {
         list: list,
@@ -21,15 +21,15 @@ function choiceService($http, $interpolate) {
         return $http.post(choice1(), data);
     }
 
-    function destroy(id) {
-        return $http.delete(choice1({ id: id }));
+    function destroy(choice_id) {
+        return $http.delete(choice1({ choice_id: choice_id }));
     }
 
-    function update(id,choice) {
+    function update(choice_id,choice) {
         var data = {
             choice:choice
         };
 
-        return $http.put(choice1({ id: id }), data);
+        return $http.put(choice1({ choice_id: choice_id }), data);
     }
 }

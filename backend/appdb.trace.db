@@ -766,4 +766,36 @@ org.h2.jdbc.JdbcSQLException: Unknown data type: ","; SQL statement:
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
 2016-11-08 19:24:36 database: flush
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: Writing to cache:nio:/Users/souji/OnlineExam/backend/appdb.mv.db failed; length 4096 at 28672 [1.4.192/2]" [50000-192]
-	at org.h2.message.DbExcepti
+	at org.h2.message.DbExcepti2016-11-14 10:18:35 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ""QUESTIONCHOICE"" VALUES(:[*]QUESTION_ID,:CHOICE_ID )APPLICATION "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM, WITH"; SQL statement:
+INSERT INTO `QuestionChoice` VALUES(:question_id,:choice_id )APPLICATION [42001-192]
+2016-11-14 10:19:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "QUESTIONCHOICE[*]"; SQL statement:
+QUESTIONCHOICE [42000-192]
+2016-11-14 10:24:53 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Column "RANJITH" not found; SQL statement:
+INSERT INTO `user` VALUES(3,ranjith,ranjith,adm) [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Insert.prepare(Insert.java:270)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+2016-11-14 10:26:33 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ""USER"" VALUES(:[*]3,:RANJITH,:RANJITH,:ADM) "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM, WITH"; SQL statement:
+INSERT INTO `user` VALUES(:3,:ranjith,:ranjith,:adm) [42001-192]
+2016-11-14 10:26:50 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ""USER"" VALUES(:[*]ID,:USERNAME,:PASSWORD) "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM, WITH"; SQL statement:
+INSERT INTO `user` VALUES(:id,:username,:password) [42001-192]

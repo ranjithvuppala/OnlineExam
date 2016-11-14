@@ -2,24 +2,24 @@ package tarun.bth.App.db.entity;
 
 
 public class Choice {
-    private Integer id;
+    private Integer choice_id;
 
     private String choice;
 
-    public Choice(Integer id, String choice) {
-        this.id = id;
+    public Choice(Integer choice_id, String choice) {
+        this.choice_id = choice_id;
         this.choice = choice;
     }
 
     public Choice() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getChoice_id() {
+        return choice_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setChoice_id(Integer choice_id) {
+        this.choice_id = choice_id;
     }
 
     public String getChoice() {

@@ -13,7 +13,6 @@ function QuestionsController(questionService) {
     function refreshQuestions() {
         return questionService.list().then(function refreshedQuestions(response) {
             vm.questions = response.data;
-
         });
     }
 

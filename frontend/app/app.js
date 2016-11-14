@@ -118,6 +118,11 @@ angular.module('app', ['ngRoute','ngCookies'])
         controller : DualSelectController,
         controllerAs : 'vm'
     })
+    .component('demo',{
+            templateUrl: 'app/demo/demo.html',
+            controller : DemoController,
+            controllerAs : 'vm'
+    })
 
     .component('exams',{templateUrl: 'app/exams/exams.html'})
 

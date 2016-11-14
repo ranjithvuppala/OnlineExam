@@ -6,9 +6,7 @@ import tarun.bth.App.db.entity.QuestionName;
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
-/**
- * Created by user on 03-11-2016.
- */
+
 public interface QuestionProcess {
     List<Question> getAllQuestions();
     Question create(Question question);
