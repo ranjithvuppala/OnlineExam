@@ -35,6 +35,7 @@ public class App extends Application<ApplicationConfiguration>{
         final ExamDAO examDAO = dbi.onDemand(ExamDAO.class);
         final ChoiceDAO choiceDAO = dbi.onDemand(ChoiceDAO.class);
         final QuestionChoiceDAO questionChoiceDAO=dbi.onDemand(QuestionChoiceDAO.class);
+        final ExamQuestionDAO examQuestionDAO=dbi.onDemand(ExamQuestionDAO.class);
 
         // processes
         QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO);
@@ -42,6 +43,7 @@ public class App extends Application<ApplicationConfiguration>{
         ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
         ChoiceProcess choiceProcess = new ChoiceProcessDbImpl(choiceDAO);
         QuestionChoiceProcess questionChoiceProcess = new QuestionChoiceDbImpl(questionChoiceDAO);
+        ExamQuestionProcess examQuestionProcess = new ExamQuestionDbImpl(examQuestionDAO);
 
         // resources
         //UserResource loginResource = new UserResource()
@@ -49,6 +51,8 @@ public class App extends Application<ApplicationConfiguration>{
         ExamResource examResource = new ExamResource(examProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
+        ExamQuestionResource examQuestionResource = new ExamQuestionResource(examQuestionProcess);
+
 
         // tables
         userDAO.createTable();
@@ -56,6 +60,7 @@ public class App extends Application<ApplicationConfiguration>{
         examDAO.createTable();
         choiceDAO.createTable();
         questionChoiceDAO.createTable();
+        examQuestionDAO.createTable();
 
         //insert admin into table login
          userDAO.insertAdminDetails();
@@ -67,6 +72,7 @@ public class App extends Application<ApplicationConfiguration>{
         environment.jersey().register(examResource);
         environment.jersey().register(choiceResource);
         environment.jersey().register(questionChoiceResource);
+        environment.jersey().register(examQuestionResource);
 
 
         //Authentication and Authorization
