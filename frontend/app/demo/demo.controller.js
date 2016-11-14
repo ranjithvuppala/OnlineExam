@@ -16,6 +16,7 @@ function DemoController(questionService,choiceService) {
         var parentControllerHasSetData = angular.isDefined(vm.data);
         vm.question = parentControllerHasSetData ? vm.data.question : '';
         vm.submittedQuestion = [];
+        vm.correctOption = null;
         return choiceService.list().then(function retrievedOptions(response) {
             vm.left = response.data;
             vm.right = [];
@@ -44,9 +45,10 @@ function DemoController(questionService,choiceService) {
         vm.demo.$setUntouched();
     }
 
-    function onSubmit2(array){
+    function onSubmit2(obj,array){
 
         console.log(array);
+        console.log(obj);
 
             /*var data = {
                     question_id:question_id,
