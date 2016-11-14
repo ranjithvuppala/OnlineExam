@@ -22,7 +22,7 @@ public class QuestionChoiceResource {
     }
 
     @POST
-    public List<QuestionChoice> createQuestionChoice(QuestionChoice questionChoice) {
+    public int createQuestionChoice(List<QuestionChoice> questionChoice) {
         return this.questionChoiceProcess.create(questionChoice);
     }
 

@@ -4,7 +4,6 @@ import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import tarun.bth.App.db.entity.QuestionChoice;
-
 import java.util.List;
 
 @RegisterMapperFactory(BeanMapperFactory.class)

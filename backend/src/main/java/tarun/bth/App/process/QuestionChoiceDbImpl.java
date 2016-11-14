@@ -2,7 +2,6 @@ package tarun.bth.App.process;
 
 import tarun.bth.App.db.QuestionChoiceDAO;
 import tarun.bth.App.db.entity.QuestionChoice;
-
 import java.util.List;
 
 public class QuestionChoiceDbImpl implements QuestionChoiceProcess{
@@ -13,9 +12,15 @@ public class QuestionChoiceDbImpl implements QuestionChoiceProcess{
     }
 
     @Override
-    public List<QuestionChoice> create(QuestionChoice questionChoice) {
+    public int create(List<QuestionChoice> questionChoice){
 
-        return this.questionChoiceDAO.findQuestionChoiceById(this.questionChoiceDAO.create(questionChoice));
+        for(QuestionChoice i : questionChoice){
+
+            this.questionChoiceDAO.create(i);
+
+        }
+
+        return(0);
     }
 
     @Override

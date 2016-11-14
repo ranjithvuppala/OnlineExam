@@ -7,10 +7,10 @@ function DemoController(questionService,choiceService) {
     vm.onReset  =onUserDidReset;
 
     vm.transfer= transfer;
-   /* vm.onSubmit2 = onSubmit2;
-*/
+    vm.onSubmit2 = onSubmit2;
     vm.showError = showError;
     vm.submittedQuestionEmpty = submittedQuestionEmpty;
+    vm.selectedChoicesEmpty = selectedChoicesEmpty;
 
     function $onInit() {
         var parentControllerHasSetData = angular.isDefined(vm.data);
@@ -43,20 +43,22 @@ function DemoController(questionService,choiceService) {
         vm.demo.$setPristine();
         vm.demo.$setUntouched();
     }
-/*
+
     function onSubmit2(array){
 
-            var data = {
+        console.log(array);
+
+            /*var data = {
                     question_id:question_id,
                     choice_id:array[i].choice_id
                 };
             return examService.create(data)
                 .then($onInit)
                 .catch(vm.showError);
-
+*/
 
     }
-*/
+
 
     function transfer(selected, from,to){
 
@@ -90,8 +92,11 @@ function DemoController(questionService,choiceService) {
     }
 
     function submittedQuestionEmpty() {
-        console.log(vm.submittedQuestion);
         return vm.submittedQuestion.length > 0;
+    }
+
+    function selectedChoicesEmpty() {
+        return vm.right.length > 0;
     }
 }
 

@@ -799,3 +799,9 @@ INSERT INTO `user` VALUES(:3,:ranjith,:ranjith,:adm) [42001-192]
 2016-11-14 10:26:50 jdbc[14]: exception
 org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO ""USER"" VALUES(:[*]ID,:USERNAME,:PASSWORD) "; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM, WITH"; SQL statement:
 INSERT INTO `user` VALUES(:id,:username,:password) [42001-192]
+2016-11-14 15:11:06 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "QUESTIONCHOICE" not found; SQL statement:
+/* QuestionChoiceDAO.create */ INSERT INTO `QuestionChoice` VALUES(?,? ) [42102-192]
+2016-11-14 15:11:06 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "QUESTIONCHOICE" not found; SQL statement:
+/* QuestionChoiceDAO.create */ INSERT INTO `QuestionChoice` VALUES(?,? ) [42102-192]
