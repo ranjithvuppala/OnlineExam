@@ -3,9 +3,12 @@ package tarun.bth.App.process;
 import tarun.bth.App.db.ChoiceDAO;
 import tarun.bth.App.db.QuestionChoiceDAO;
 import tarun.bth.App.db.QuestionDAO;
+import tarun.bth.App.db.entity.Choice;
 import tarun.bth.App.db.entity.Question;
+import tarun.bth.App.db.entity.QuestionResponse;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,8 +17,14 @@ public class QuestionProcessDbImpl implements QuestionProcess {
 
     private QuestionDAO questionDAO;
 
-    public QuestionProcessDbImpl(QuestionDAO questionDAO) {
+    private QuestionChoiceProcess questionChoiceProcess;
+
+    private ChoiceProcess choiceProcess;
+
+    public QuestionProcessDbImpl(QuestionDAO questionDAO, QuestionChoiceProcess questionChoiceProcess, ChoiceProcess choiceProcess) {
         this.questionDAO = questionDAO;
+        this.questionChoiceProcess = questionChoiceProcess;
+        this.choiceProcess = choiceProcess;
     }
 
     @Override
@@ -47,5 +56,26 @@ public class QuestionProcessDbImpl implements QuestionProcess {
     @Override
     public void delete(Integer question_id) {
         this.questionDAO.delete(question_id);
+    }
+
+    @Override
+    public List<QuestionResponse> findList(List<Integer> questionIdList) throws NotFoundException {
+
+        List<QuestionResponse> questionResponseList = new ArrayList<QuestionResponse>();
+        for(Integer i : questionIdList){
+
+            List<Integer> choiceIdList = this.questionChoiceProcess.find(i);
+            List<Choice> choiceList = this.choiceProcess.findList(choiceIdList);
+            Question question= this.find(i);
+            question.setCorrectChoice_id(null);
+            QuestionResponse questionResponse = new QuestionResponse(question,choiceList);
+            questionResponse.setQuestion(question);
+            questionResponse.setChoiceList(choiceList);
+            questionResponseList.add(questionResponse);
+
+        }
+
+        return questionResponseList;
+
     }
 }

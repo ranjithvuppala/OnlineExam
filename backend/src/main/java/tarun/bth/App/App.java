@@ -38,17 +38,17 @@ public class App extends Application<ApplicationConfiguration>{
         final ExamQuestionDAO examQuestionDAO=dbi.onDemand(ExamQuestionDAO.class);
 
         // processes
-        QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO);
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
         ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
         ChoiceProcess choiceProcess = new ChoiceProcessDbImpl(choiceDAO);
         QuestionChoiceProcess questionChoiceProcess = new QuestionChoiceDbImpl(questionChoiceDAO);
         ExamQuestionProcess examQuestionProcess = new ExamQuestionDbImpl(examQuestionDAO);
+        QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO,questionChoiceProcess,choiceProcess);
 
         // resources
         //UserResource loginResource = new UserResource()
         QuestionResource questionResource = new QuestionResource(questionProcess,questionChoiceProcess,choiceProcess);
-        ExamResource examResource = new ExamResource(examProcess);
+        ExamResource examResource = new ExamResource(examProcess,questionProcess,examQuestionProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
         ExamQuestionResource examQuestionResource = new ExamQuestionResource(examQuestionProcess);

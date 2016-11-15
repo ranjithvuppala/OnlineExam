@@ -52,7 +52,6 @@ public class QuestionResource {
         Question question= this.questionProcess.find(question_id);
         question.setCorrectChoice_id(null);
         QuestionResponse questionResponse = new QuestionResponse(question,choiceList);
-
         questionResponse.setQuestion(question);
         questionResponse.setChoiceList(choiceList);
 
