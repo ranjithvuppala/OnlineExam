@@ -4,11 +4,10 @@ function appConfig($routeProvider,$httpProvider) {
     $routeProvider
         .when('/', {template: '<login-page></login-page>'})
         .when('/info', {template: '<info></info>'})
-        .when('/redirect', {template: '<questions></questions>'})
-        .when('/info1', {template: '<info1></info1>'})
-        .when('/choices', {template: '<choices></choices>'})
-        .when('/createExam',{template: '<exams></exams>'})
-        .when('/demo',{template: '<demo></demo>'})
+        .when('/info1', {template: '<info1></info1>',resolve:{loggedIn:onlyLoggedIn}})
+        .when('/choices', {template: '<choices></choices>',resolve:{loggedIn:onlyLoggedIn}})
+        .when('/createExam',{template: '<exams></exams>',resolve:{loggedIn:onlyLoggedIn}})
+        .when('/createQuestion',{template: '<question></question>',resolve:{loggedIn:onlyLoggedIn}})
         .otherwise({
             redirectTo: '/'
 
@@ -16,10 +15,9 @@ function appConfig($routeProvider,$httpProvider) {
 }
 
 
-
-/*
 var onlyLoggedIn = function ($location,$q,$cookies) {
     var deferred = $q.defer();
+    console.log(deferred);
     var authdata = $cookies.get('authdata')|| null;
 
 
@@ -32,5 +30,5 @@ var onlyLoggedIn = function ($location,$q,$cookies) {
     }
     return deferred.promise;
 };
-*/
+
 

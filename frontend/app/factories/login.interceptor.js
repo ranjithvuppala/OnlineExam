@@ -14,10 +14,10 @@ function loginInterceptor($location) {
 
     };
 
-    function authRedirect(response){
-
+    function authRedirect(config,response){
         if(response.status === 401|| response.status === 403)
         {
+            $location.url('/login');
             return response;
         }
         return response;

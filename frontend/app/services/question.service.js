@@ -5,26 +5,16 @@ function questionService($http, $interpolate) {
         list: list,
         create: create,
         destroy: destroy,
-        update: update,
-        listquestions: listquestions
+        update: update
     };
 
     function list() {
         return $http.get(question());
     }
 
-    function listquestions() {
-        return $http.get(question({question_id: "onlyquestions"}));
-    }
-
-    function create(quest, firstoption,secondoption,thirdoption,fourthoption,correctoption) {
+    function create(quest) {
         var data = {
-            question: quest,
-            firstoption: firstoption,
-            secondoption: secondoption,
-            thirdoption: thirdoption,
-            fourthoption: fourthoption,
-            correctoption: correctoption
+            question: quest
         };
 
         return $http.post(question(), data);
@@ -34,16 +24,9 @@ function questionService($http, $interpolate) {
         return $http.delete(question({ question_id: question_id }));
     }
 
-    function update(id,quest,firstoption,secondoption,thirdoption,fourthoption,correctoption) {
-        var data = {
-            question: quest,
-            firstoption: firstoption,
-            secondoption: secondoption,
-            thirdoption: thirdoption,
-            fourthoption: fourthoption,
-            correctoption: correctoption
-        };
+    function update(obj) {
 
-        return $http.put(question({ question_id: id }), data);
+        id = obj.question_id;
+        return $http.put(question({ question_id: id }), obj);
     }
 }

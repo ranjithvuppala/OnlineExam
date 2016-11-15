@@ -1,40 +1,51 @@
 package tarun.bth.App.db.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Question {
 
+    @JsonProperty
     private Integer question_id;
 
-
+    @JsonProperty
+    @NotEmpty
     private String question;
 
-
-    private String firstoption;
-
-
-    private String secondoption;
-
-
-    private String thirdoption;
-
-
-    private String fourthoption;
-
-    private String correctoption;
+    @JsonProperty
+    private Integer correctChoice_id;
 
     public Question(){}
 
-    public Question(Integer question_id, String question, String firstoption, String secondoption, String thirdoption, String fourthoption, String correctoption){
+    public Question(Integer question_id, String question, Integer correctChoice_id){
 
         this.question_id=question_id;
         this.question=question;
-        this.firstoption=firstoption;
-        this.secondoption=secondoption;
-        this.thirdoption=thirdoption;
-        this.fourthoption=fourthoption;
-        this.correctoption=correctoption;
+        this.correctChoice_id = correctChoice_id;
+
     }
+
+    public Question(String question, Integer correctChoice_id){
+        this.question = question;
+        this.correctChoice_id = correctChoice_id;
+    }
+
+    public Question(Integer question_id, String question){
+        this.question_id = question_id;
+        this.question = question;
+    }
+
+    public Question(Integer question_id, Integer correctChoice_id){
+        this.question_id = question_id;
+        this.correctChoice_id = correctChoice_id;
+    }
+
+    public Question(String question){
+        this.question = question;
+
+    }
+
     public Integer getQuestion_id() {
         return question_id;
     }
@@ -43,15 +54,9 @@ public class Question {
         return question;
     }
 
-    public String getFirstoption() { return firstoption;}
-
-    public String getSecondoption() { return secondoption;}
-
-    public String getThirdoption() { return thirdoption;}
-
-    public String getFourthoption() { return fourthoption;}
-
-    public String getCorrectoption() { return correctoption;}
+    public Integer getCorrectChoice_id() {
+        return correctChoice_id;
+    }
 
     public void setQuestion_id(Integer question_id) {
         this.question_id = question_id;
@@ -61,14 +66,7 @@ public class Question {
         this.question = question;
     }
 
-    public void setFirstoption(String firstoption) { this.firstoption = firstoption;}
-
-    public void setSecondoption(String secondoption) { this.secondoption = secondoption;}
-
-    public void setThirdoption(String thirdoption) { this.thirdoption = thirdoption;}
-
-    public void setFourthoption(String fourthoption) { this.fourthoption = fourthoption;}
-
-    public void setCorrectoption(String correctoption) { this.correctoption = correctoption;}
-
+    public void setCorrectChoice_id(Integer correctChoice_id) {
+        this.correctChoice_id = correctChoice_id;
+    }
 }

@@ -1,41 +1,112 @@
-function QuestionController(questionService) {
+function QuestionController(questionService,questionChoiceService,choiceService) {
     var vm = this;
 
     vm.$onInit = $onInit;
 
-    vm.editQuestion = editQuestion;
-    vm.removeQuestion = removeQuestion;
-    vm.submitEditedQuestion = submitEditedQuestion;
-    vm.resetEditedQuestion = resetEditedQuestion;
+    vm.onSubmit1 =onUserDidSubmit1;
+    vm.onReset  =onUserDidReset;
+
+    vm.transfer= transfer;
+    vm.onSubmit2 = onSubmit2;
     vm.showError = showError;
+    vm.submittedQuestionEmpty = submittedQuestionEmpty;
+    vm.selectedChoicesEmpty = selectedChoicesEmpty;
 
     function $onInit() {
-        // vm.notesController will be our parent controller (NotesController)
-        // vm.data will contain the data of this note
-        vm.resetEditedQuestion();
+        var parentControllerHasSetData = angular.isDefined(vm.data);
+        vm.question = parentControllerHasSetData ? vm.data.question : '';
+        vm.submittedQuestion = [];
+        vm.questionWithCorrectChoice = {question_id:null,question:null,correctChoice_id:null};
+        vm.QuestionChoice = [];
+        vm.correctOption = null;
+        return choiceService.list().then(function retrievedOptions(response) {
+            vm.left = response.data;
+            vm.right = [];
+        });
+
     }
 
-    function editQuestion() {
-        vm.isEditingQuestion = true;
-    }
+    function onUserDidSubmit1(question) {
+        return questionService.create(question)
+            .then(function submittedQuestion(response){
 
-    function removeQuestion() {
-        questionService.destroy(vm.data.question_id)
-            .then(vm.questionsController.refreshQuestions);
-    }
-
-    function submitEditedQuestion(quest, firstoption,secondoption,thirdoption,fourthoption,correctoption) {
-        return questionService.update(vm.data.question_id, quest, firstoption,secondoption,thirdoption,fourthoption,correctoption)
-            .then(vm.questionsController.refreshQuestions)
-            .then(vm.resetEditedQuestion)
+                if(response.status === 200){
+                    vm.submittedQuestion = [response.data];
+                }
+            })
             .catch(vm.showError);
     }
 
-    function resetEditedQuestion() {
-        vm.isEditingQuestion = false;
+
+    function onUserDidReset() {
+        vm.question = '';
+        vm.demo.$setPristine();
+        vm.demo.$setUntouched();
+    }
+
+    function onSubmit2(obj,array){
+
+        console.log(array);
+        console.log(obj);
+
+        if(obj === null){alert("Please select correct option")}
+        else {
+            var n = array.length;
+
+            for (i = 0; i < n; i++) {
+
+                vm.QuestionChoice[i] = {question_id: null, choice_id: null};
+                vm.QuestionChoice[i].question_id = vm.submittedQuestion[0].question_id;
+                vm.QuestionChoice[i].choice_id = array[i].choice_id;
+            }
+
+            vm.questionWithCorrectChoice.question_id = vm.submittedQuestion[0].question_id;
+            vm.questionWithCorrectChoice.question = vm.submittedQuestion[0].question;
+            vm.questionWithCorrectChoice.correctChoice_id = obj.choice_id;
+
+
+            return questionChoiceService.create(vm.QuestionChoice)
+                .then(function test(){
+                    return questionService.update(vm.questionWithCorrectChoice)
+                        .then(vm.$onInit)
+                        .catch(vm.showError);
+                })
+                .catch(vm.showError);
+        }
+
+    }
+
+
+    function transfer(selected, from,to){
+
+        var n = selected.length;
+        for(i=0;i<n;i++){
+            var k = arrayObjectIndexOf(from,selected[i]);
+            to.push(selected[i]);
+            from.splice(k,1);
+        }
+        to.sort(function(a, b) {
+            return a.choice_id - b.choice_id;
+        });
+    }
+
+    function arrayObjectIndexOf(Array, searchTerm) {
+        for(var i = 0, len = Array.length; i < len; i++) {
+            if (Array[i].choice_id === searchTerm.choice_id) return i;
+        }
+        return -1;
     }
 
     function showError(response) {
         alert(response.data.errors.join("\n"));
     }
+
+    function submittedQuestionEmpty() {
+        return vm.submittedQuestion.length > 0;
+    }
+
+    function selectedChoicesEmpty() {
+        return vm.right.length > 0;
+    }
 }
+

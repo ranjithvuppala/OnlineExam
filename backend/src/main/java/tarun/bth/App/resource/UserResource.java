@@ -21,16 +21,13 @@ public class UserResource {
     }
 
 
-    @GET
-    @Path("/logout")
-    public String logout(@Auth User user){
-        System.out.println(user);
-        return user.getUsername();
-    }
-
     @POST
     public User verifyLogin(User user) {
-        return this.userProcess.verify(user);
+        User test = this.userProcess.verify(user);
+        test.setUsername(null);
+        test.setPassword(null);
+        test.setId(null);
+        return test;
     }
 
 }

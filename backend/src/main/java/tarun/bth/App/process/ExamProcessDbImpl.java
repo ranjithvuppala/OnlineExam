@@ -19,7 +19,7 @@ public class ExamProcessDbImpl implements ExamProcess {
 
 
     @Override
-    public List<Exam> getSelectedQuestions() {return examDAO.getSelectedQuestions(); }
+    public List<Exam> getExams() {return examDAO.getExams(); }
 
     @Override
     public Exam create(Exam exam) {
@@ -29,14 +29,9 @@ public class ExamProcessDbImpl implements ExamProcess {
 
 
     @Override
-    public Exam update(Integer exam_id, Exam updatedexamPaper) throws NotFoundException {
+    public Exam update(Integer exam_id, Exam updatedExamPaper) throws NotFoundException {
         Exam exam = this.find(exam_id);
-        //exam.setExam(updatedexamPaper.getExam());
-        exam.setFirstquestion_id(updatedexamPaper.getFirstquestion_id());
-        exam.setSecondquestion_id(updatedexamPaper.getSecondquestion_id());
-        exam.setThirdquestion_id(updatedexamPaper.getThirdquestion_id());
-        exam.setFourthquestion_id(updatedexamPaper.getFourthquestion_id());
-        exam.setFifthquestion_id(updatedexamPaper.getFifthquestion_id());
+        exam.setExam(updatedExamPaper.getExam());
         this.examDAO.update(exam);
         return exam;
     }

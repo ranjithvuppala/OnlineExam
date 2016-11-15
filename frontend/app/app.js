@@ -1,7 +1,9 @@
 angular.module('app', ['ngRoute','ngCookies'])
     .factory('loginService',loginService)
     .factory('loginInterceptor', loginInterceptor)
+    .factory('questionChoiceService', questionChoiceService)
     .factory('examService', examService)
+    .factory('examQuestionService', examQuestionService)
     .component('loginBox', {
         templateUrl: 'app/login-box/login-box.html',
         controller: LoginBoxController,
@@ -18,43 +20,6 @@ angular.module('app', ['ngRoute','ngCookies'])
 
     //.......................................................................
     .factory('questionService', questionService )
-    .component('questionForm', {
-        templateUrl: 'app/question-form/question-form.html',
-        controller: QuestionFormController,
-        controllerAs: 'vm',
-
-        require: {
-            questionsController: '^?questions'
-        },
-
-        bindings: {
-            data: '<',
-            onSubmit: '<',
-            onReset: '<'
-        }
-    })
-    .component('question', {
-        templateUrl: 'app/question/question.html',
-        controller: QuestionController,
-        controllerAs: 'vm',
-
-        require: {
-            questionsController: '^questions'
-        },
-
-        bindings: {
-            data: '<'
-        }
-
-    })
-    .component('questions', {
-        templateUrl: 'app/questions/questions.html',
-        controller: QuestionsController,
-        controllerAs: 'vm'
-
-    })
-
-
     //........................................................................
 
     .factory('choiceService', choiceService )
@@ -113,18 +78,17 @@ angular.module('app', ['ngRoute','ngCookies'])
     .component('loginPage', {templateUrl: 'app/login-page/login-page.html' })
     .component('navigation', { templateUrl: 'app/navigation/navigation.html' })
     .component('info', { templateUrl: 'app/info/info.html' })
-    .component('dualSelect',{
-        templateUrl: 'app/dual-select/dual-select.html',
-        controller : DualSelectController,
-        controllerAs : 'vm'
-    })
-    .component('demo',{
-            templateUrl: 'app/demo/demo.html',
-            controller : DemoController,
+    .component('question',{
+            templateUrl: 'app/question/question.html',
+            controller : QuestionController,
             controllerAs : 'vm'
     })
 
-    .component('exams',{templateUrl: 'app/exams/exams.html'})
+    .component('exams',{
+        templateUrl: 'app/exams/exams.html',
+        controller: ExamsController,
+        controllerAs: 'vm'
+    })
 
     .config(appConfig)
     .run(run);

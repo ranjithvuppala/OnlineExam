@@ -10,13 +10,13 @@ import java.util.List;
 
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface ExamDAO {
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS Exam(exam_id int auto_increment primary key, firstquestion_id int, secondquestion_id int, thirdquestion_id int , fourthquestion_id int , fifthquestion_id int)")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS Exam(exam_id int auto_increment primary key, exam varchar(255))")
     public void createTable();
 
     @SqlQuery("SELECT * FROM Exam")
-    public List<Exam> getSelectedQuestions();
+    public List<Exam> getExams();
 
-    @SqlUpdate("INSERT INTO `Exam` VALUES(:exam_id,:firstquestion_id,:secondquestion_id,:thirdquestion_id,:fourthquestion_id, :fifthquestion_id)")
+    @SqlUpdate("INSERT INTO `Exam` VALUES(:exam_id,:exam)")
     @GetGeneratedKeys
     int create(@BindBean Exam exam);
 
@@ -24,12 +24,10 @@ public interface ExamDAO {
     @SqlQuery("SELECT * FROM `Exam` WHERE exam_id = :exam_id")
     public Exam findExamById(@Bind("exam_id") int exam_id);
 
-    @SqlUpdate("UPDATE `Exam` set firstquestion_id= :firstquestion_id,secondquestion_id= :secondquestion_id,thirdquestion_id= :thirdquestion_id,fourthquestion_id= :fourthquestion_id, fifthquestion_id= :fifthoption WHERE exam_id = :exam_id")
+    @SqlUpdate("UPDATE `Exam` set exam = :exam WHERE exam_id = :exam_id")
     int update(@BindBean Exam exam);
 
     @SqlUpdate("DELETE FROM `Exam` WHERE exam_id = :exam_id")
     int delete(@Bind("exam_id") int exam_id);
 
-   // @SqlQuery("SELECT exam_id,exam From Exam")
-    //public List<Exam> getSelectedQuestions();
 }

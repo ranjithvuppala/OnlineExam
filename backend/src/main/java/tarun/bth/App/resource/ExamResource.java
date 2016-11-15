@@ -11,7 +11,7 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 @RolesAllowed("ADMIN")
-@Path("ExamProcess")
+@Path("Exam")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ExamResource {
@@ -22,41 +22,24 @@ public class ExamResource {
     }
 
     @GET
-    public List<Exam> getSelectedQuestions() {
-        return examProcess.getSelectedQuestions();
+    public List<Exam> getExam(){
+        return this.examProcess.getExams();
     }
 
-
     @POST
-    public Exam createExam(Exam exam) {
+    public Exam create(Exam exam) {
         return this.examProcess.create(exam);
-       /*if (question != null) {
-           examPaperDAO.create(question);
-           throw new WebApplicationException(Response.Status.OK);
-       } else {
-           throw new WebApplicationException(Response.Status.BAD_REQUEST);
-       }*/
     }
     @GET
     @Path("/{exam_id}")
     public Exam getExamById(@PathParam("exam_id") int exam_id) {
-        return examProcess.find(exam_id);
+        return this.examProcess.find(exam_id);
     }
 
 
     @PUT
     @Path("/{exam_id}")
     public Exam updateExam(@PathParam("exam_id") int exam_id, Exam exam){
-
-
-        /*Question question= examPaperDAO.findQuestionById(question_id);
-        question.setQuestion(updatedexamPaper.getQuestion());
-        question.setFirstoption(updatedexamPaper.getFirstoption());
-        question.setSecondoption(updatedexamPaper.getSecondoption());
-        question.setThirdoption(updatedexamPaper.getThirdoption());
-        question.setFourthoption(updatedexamPaper.getFourthoption());
-
-        return examPaperDAO.update(question_id,question);*/
         return this.examProcess.update(exam_id, exam);
     }
 

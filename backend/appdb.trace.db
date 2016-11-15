@@ -805,3 +805,12 @@ org.h2.jdbc.JdbcSQLException: Table "QUESTIONCHOICE" not found; SQL statement:
 2016-11-14 15:11:06 jdbc[12]: exception
 org.h2.jdbc.JdbcSQLException: Table "QUESTIONCHOICE" not found; SQL statement:
 /* QuestionChoiceDAO.create */ INSERT INTO `QuestionChoice` VALUES(?,? ) [42102-192]
+2016-11-15 01:19:51 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLException: Table "EXAMEXAMQUESTION" not found; SQL statement:
+drop table examEXAMQUESTION [42102-192]
+2016-11-15 01:20:17 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "                          CREATE TABLE IF NOT EXISTS EXAM(EXAM_ID INT AUTO_INCREMENT PRIMARY KEY, EXAM VARCHAR(255) [*]"; expected "FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+/* ExamDAO.createTable */ CREATE TABLE IF NOT EXISTS Exam(exam_id int auto_increment primary key, exam varchar(255) [42001-192]
+2016-11-15 01:30:24 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE QUESTION CHOICE[*] "; SQL statement:
+drop table question Choice [42000-192]

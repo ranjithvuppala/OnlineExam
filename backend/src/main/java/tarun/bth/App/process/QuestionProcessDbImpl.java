@@ -2,7 +2,6 @@ package tarun.bth.App.process;
 
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.entity.Question;
-import tarun.bth.App.db.entity.QuestionName;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
@@ -31,11 +30,7 @@ public class QuestionProcessDbImpl implements QuestionProcess {
     public Question update(Integer question_id, Question updatedexamPaper) throws NotFoundException {
         Question question = this.find(question_id);
         question.setQuestion(updatedexamPaper.getQuestion());
-        question.setFirstoption(updatedexamPaper.getFirstoption());
-        question.setSecondoption(updatedexamPaper.getSecondoption());
-        question.setThirdoption(updatedexamPaper.getThirdoption());
-        question.setFourthoption(updatedexamPaper.getFourthoption());
-        question.setCorrectoption(updatedexamPaper.getCorrectoption());
+        question.setCorrectChoice_id(updatedexamPaper.getCorrectChoice_id());
         this.questionDAO.update(question);
         return question;
     }
@@ -50,10 +45,5 @@ public class QuestionProcessDbImpl implements QuestionProcess {
     @Override
     public void delete(Integer question_id) {
         this.questionDAO.delete(question_id);
-    }
-
-    @Override
-    public List<QuestionName> getOnlyQuestions() {
-        return this.questionDAO.getOnlyQuestions();
     }
 }

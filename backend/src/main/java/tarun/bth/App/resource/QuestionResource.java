@@ -1,7 +1,6 @@
 package tarun.bth.App.resource;
 
 import tarun.bth.App.db.entity.Question;
-import tarun.bth.App.db.entity.QuestionName;
 import tarun.bth.App.process.QuestionProcess;
 
 import javax.annotation.security.RolesAllowed;
@@ -27,21 +26,9 @@ public class QuestionResource {
         return questionProcess.getAllQuestions();
     }
 
-    @GET
-    @Path("/onlyquestions/")
-    public List<QuestionName> getOnlyQuestions() {
-        return questionProcess.getOnlyQuestions();
-    }
-
    @POST
     public Question createQuestion(Question question) {
         return this.questionProcess.create(question);
-       /*if (question != null) {
-           examPaperDAO.create(question);
-           throw new WebApplicationException(Response.Status.OK);
-       } else {
-           throw new WebApplicationException(Response.Status.BAD_REQUEST);
-       }*/
     }
     @GET
     @Path("/{question_id}")
@@ -52,16 +39,6 @@ public class QuestionResource {
     @PUT
     @Path("/{question_id}")
     public Question updateQuestion(@PathParam("question_id") int question_id, Question question){
-
-
-        /*Question question= examPaperDAO.findQuestionById(question_id);
-        question.setQuestion(updatedexamPaper.getQuestion());
-        question.setFirstoption(updatedexamPaper.getFirstoption());
-        question.setSecondoption(updatedexamPaper.getSecondoption());
-        question.setThirdoption(updatedexamPaper.getThirdoption());
-        question.setFourthoption(updatedexamPaper.getFourthoption());
-
-        return examPaperDAO.update(question_id,question);*/
         return this.questionProcess.update(question_id, question);
     }
 

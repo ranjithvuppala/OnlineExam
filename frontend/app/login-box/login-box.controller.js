@@ -25,7 +25,7 @@ function LoginBoxController(loginService,$location) {
             {
                 loginService.SetHeaders(username,password);
 
-                $location.path("/redirect");
+                $location.path("/info1");
             }
             else{
 
