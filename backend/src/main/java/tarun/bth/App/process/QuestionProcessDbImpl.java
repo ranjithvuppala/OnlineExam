@@ -1,5 +1,7 @@
 package tarun.bth.App.process;
 
+import tarun.bth.App.db.ChoiceDAO;
+import tarun.bth.App.db.QuestionChoiceDAO;
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.entity.Question;
 
@@ -36,9 +38,9 @@ public class QuestionProcessDbImpl implements QuestionProcess {
     }
 
     @Override
-    public Question find(Integer id) throws NotFoundException {
+    public Question find(Integer question_id) throws NotFoundException {
         return Optional
-                .ofNullable(this.questionDAO.findQuestionById(id))
+                .ofNullable(this.questionDAO.findQuestionById(question_id))
                 .orElseThrow(() -> new NotFoundException("QuestionName does not exist"));
     }
 

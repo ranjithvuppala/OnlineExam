@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface QuestionChoiceProcess {
     int create(List<QuestionChoice> questionChoice);
-    List<QuestionChoice> find(int question_id);
+    List<Integer> find(int question_id);
 
 
 }

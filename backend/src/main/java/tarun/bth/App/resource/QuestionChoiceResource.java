@@ -28,7 +28,7 @@ public class QuestionChoiceResource {
 
     @GET
     @Path("/{question_id}")
-    public List<QuestionChoice> createQuestionChoice(@PathParam("question_id") int question_id) {
+    public List<Integer> createQuestionChoice(@PathParam("question_id") int question_id) {
         return this.questionChoiceProcess.find(question_id);
     }
 

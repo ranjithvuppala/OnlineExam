@@ -5,6 +5,7 @@ import tarun.bth.App.db.entity.Choice;
 
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,8 +50,17 @@ public class ChoiceProcessDbImpl implements ChoiceProcess {
         this.choiceDAO.delete(choice_id);
     }
 
-    /*@Override
-    public List<ChoiceName> getOnlyChoices() {
-        return this.choiceDAO.getOnlyChoices();
-    }*/
+    @Override
+    public List<Choice> findList(List<Integer> choice_id_list) throws NotFoundException {
+
+        List<Choice> choiceList = new ArrayList<Choice>();
+        for(Integer i : choice_id_list){
+
+           choiceList.add(this.choiceDAO.findChoiceById(i));
+
+        }
+
+        return choiceList;
+
+    }
 }

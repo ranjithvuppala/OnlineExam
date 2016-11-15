@@ -47,7 +47,7 @@ public class App extends Application<ApplicationConfiguration>{
 
         // resources
         //UserResource loginResource = new UserResource()
-        QuestionResource questionResource = new QuestionResource(questionProcess);
+        QuestionResource questionResource = new QuestionResource(questionProcess,questionChoiceProcess,choiceProcess);
         ExamResource examResource = new ExamResource(examProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);

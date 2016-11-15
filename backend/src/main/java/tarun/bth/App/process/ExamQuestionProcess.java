@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ExamQuestionProcess {
     int create(List<ExamQuestion> examQuestion);
-    List<ExamQuestion> find(int exam_id);
+    List<Integer> find(int exam_id);
 }

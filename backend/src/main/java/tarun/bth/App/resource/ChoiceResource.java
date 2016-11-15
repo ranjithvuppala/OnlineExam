@@ -29,7 +29,7 @@ public class ChoiceResource {
 
     @GET
     public List<Choice> getAllChoices() {
-            return choiceProcess.getAllChoices();
+            return this.choiceProcess.getAllChoices();
     }
 
     @DELETE
@@ -42,6 +42,14 @@ public class ChoiceResource {
     public Choice updateChoice(@PathParam("choice_id") int choice_id, Choice choice){
         return this.choiceProcess.update(choice_id, choice);
     }
+
+    @POST
+    @Path("/test")
+    public List<Choice> findbylist(List<Integer> intlist){
+
+        return this.choiceProcess.findList(intlist);
+    }
+
 
 
 }

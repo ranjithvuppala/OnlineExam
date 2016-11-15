@@ -17,7 +17,6 @@ function appConfig($routeProvider,$httpProvider) {
 
 var onlyLoggedIn = function ($location,$q,$cookies) {
     var deferred = $q.defer();
-    console.log(deferred);
     var authdata = $cookies.get('authdata')|| null;
 
 

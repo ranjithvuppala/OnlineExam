@@ -13,7 +13,7 @@
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
                 <button type="reset" class="btn btn-default" ng-click="vm.onReset() " ng-if="!vm.submittedExamTitleNotEmpty()">
-                    <span class="glyphicon glyphicon-refresh"></span>
+                    <span class="glyphicon glyphicon-remove-circle"></span>
                 </button>
             </div>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-xs-5">
-            <select class="form-control input-lg" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id"><option>{{option.question}}</option></select>
+            <select class="form-control" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id"><option>{{option.question}}</option></select>
         </div>
     </div>
 

@@ -2,7 +2,9 @@ package tarun.bth.App.process;
 
 import tarun.bth.App.db.ExamQuestionDAO;
 import tarun.bth.App.db.entity.ExamQuestion;
+import tarun.bth.App.db.entity.QuestionChoice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,7 +28,15 @@ public class ExamQuestionDbImpl implements ExamQuestionProcess {
     }
 
     @Override
-    public List<ExamQuestion> find(int exam_id) {
-        return this.examQuestionDAO.findExamQuestionById(exam_id);
+    public List<Integer> find(int exam_id) {
+
+        List<Integer> questionIdList = new ArrayList<Integer>();
+        List<ExamQuestion> examQuestionList = this.examQuestionDAO.findExamQuestionById(exam_id);
+
+        for(ExamQuestion i : examQuestionList){
+
+            questionIdList.add(i.getQuestion_id());
+        }
+        return questionIdList;
     }
 }
