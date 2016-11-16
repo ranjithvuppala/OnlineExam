@@ -8,6 +8,7 @@ function appConfig($routeProvider,$httpProvider) {
         .when('/choices', {template: '<choices></choices>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/createExam',{template: '<exams></exams>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/createQuestion',{template: '<question></question>',resolve:{loggedIn:onlyLoggedIn}})
+        .when('/examDisplay',{template:'<exam-display></exam-display>'})
         .otherwise({
             redirectTo: '/'
 

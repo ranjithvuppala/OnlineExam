@@ -21,7 +21,6 @@ function ExamsController(questionService,examService,examQuestionService) {
             vm.left = response.data;
             vm.right = [];
         });
-
     }
 
     function onUserDidSubmit1(exam) {

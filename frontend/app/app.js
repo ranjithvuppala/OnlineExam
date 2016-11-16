@@ -90,6 +90,12 @@ angular.module('app', ['ngRoute','ngCookies'])
         controllerAs: 'vm'
     })
 
+    .component('examDisplay',{
+        templateUrl: 'app/exam-display/exam-display.html',
+        controller: ExamDisplayController,
+        controllerAs: 'vm'
+    })
+
     .config(appConfig)
     .run(run);
 
