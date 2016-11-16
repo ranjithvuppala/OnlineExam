@@ -78,4 +78,9 @@ public class QuestionProcessDbImpl implements QuestionProcess {
         return questionResponseList;
 
     }
+
+    @Override
+    public int findChoice(Integer question_id) {
+       return this.questionDAO.findCorrectChoiceByQuestionId(question_id);
+    }
 }

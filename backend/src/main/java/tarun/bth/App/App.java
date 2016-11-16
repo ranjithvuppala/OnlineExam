@@ -52,6 +52,7 @@ public class App extends Application<ApplicationConfiguration>{
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
         ExamQuestionResource examQuestionResource = new ExamQuestionResource(examQuestionProcess);
+        ResultResource resultResource=new ResultResource(questionProcess);
 
 
         // tables
@@ -73,6 +74,7 @@ public class App extends Application<ApplicationConfiguration>{
         environment.jersey().register(choiceResource);
         environment.jersey().register(questionChoiceResource);
         environment.jersey().register(examQuestionResource);
+        environment.jersey().register(resultResource);
 
 
         //Authentication and Authorization

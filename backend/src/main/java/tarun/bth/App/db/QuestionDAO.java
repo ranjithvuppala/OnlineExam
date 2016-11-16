@@ -24,6 +24,10 @@ public interface QuestionDAO {
     @SqlQuery("SELECT * FROM `Question` WHERE question_id = :question_id")
     public Question findQuestionById(@Bind("question_id") int question_id);
 
+    @SqlQuery("SELECT correctChoice_id FROM `Question` WHERE question_id = :question_id")
+    public int findCorrectChoiceByQuestionId(@Bind("question_id") int question_id);
+
+
     @SqlUpdate("UPDATE `Question` set question= :question, correctChoice_id = :correctChoice_id WHERE question_id = :question_id")
     int update(@BindBean Question question);
 
