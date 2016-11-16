@@ -14,5 +14,6 @@ public interface QuestionProcess {
     Question find(Integer question_id) throws NotFoundException;
     void delete(Integer question_id);
     List<QuestionResponse> findList(List<Integer> questionIdlist);
+    int findChoice(Integer question_id);
 
 }
