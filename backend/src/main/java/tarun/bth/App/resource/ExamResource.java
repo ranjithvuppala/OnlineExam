@@ -7,6 +7,7 @@ import tarun.bth.App.process.ExamProcess;
 import tarun.bth.App.process.ExamQuestionProcess;
 import tarun.bth.App.process.QuestionProcess;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,7 +15,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-//@RolesAllowed("ADMIN")
+@RolesAllowed("ADMIN")
 @Path("Exam")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -41,6 +42,7 @@ public class ExamResource {
         return this.examProcess.create(exam);
     }
     @GET
+    @PermitAll
     @Path("/{exam_id}")
     public ExamResponse getExamById(@PathParam("exam_id") int exam_id) {
         List<Integer> questionIdList = this.examQuestionProcess.find(exam_id);
@@ -52,7 +54,6 @@ public class ExamResource {
 
         return examResponse;
     }
-
 
     @PUT
     @Path("/{exam_id}")

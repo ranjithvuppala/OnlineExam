@@ -14,7 +14,7 @@ function loginInterceptor($location) {
 
     };
 
-    function authRedirect(config,response){
+    function authRedirect(response){
         if(response.status === 401|| response.status === 403)
         {
             $location.url('/login');

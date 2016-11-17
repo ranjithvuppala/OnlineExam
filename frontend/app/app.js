@@ -99,8 +99,10 @@ angular.module('app', ['ngRoute','ngCookies'])
     .config(appConfig)
     .run(run);
 
-function run($http,$cookies){
+function run($location,$http,$cookies){
 
+    var test = $location.path();
+    console.log(test);
     var authdata = $cookies.get('authdata')|| null;
 
     if (authdata!= null){

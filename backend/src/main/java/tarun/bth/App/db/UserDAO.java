@@ -11,10 +11,10 @@ import java.util.List;
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface UserDAO {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS user(id int auto_increment primary key, username varchar(12), password varchar(12), role varchar(12))")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS user(id int auto_increment primary key, username varchar(12), password varchar(12), role varchar(12), examid int, score int)")
     public void createTable();
 
-    @SqlUpdate("Merge into user values(0,'admin','admin','adm')")
+    @SqlUpdate("Merge into user values(0,'admin','admin','adm',null,null)")
     public void insertAdminDetails();
 
     @SqlQuery("SELECT * FROM user;")
@@ -32,6 +32,6 @@ public interface UserDAO {
     @GetGeneratedKeys
     public int create(@BindBean User user);
 
-    @SqlUpdate("UPDATE `user` set username= :username, password= :password WHERE id = :id")
+    @SqlUpdate("UPDATE `user` set username= :username, password= :password, role= :role,examid= :examId, score= :score WHERE id = :id")
     public int update(@BindBean User user);
 }

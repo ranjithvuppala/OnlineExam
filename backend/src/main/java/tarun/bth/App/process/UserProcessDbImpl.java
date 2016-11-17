@@ -18,4 +18,24 @@ public class UserProcessDbImpl implements UserProcess {
                 .orElseThrow(() -> new NotAuthorizedException("Invalid Credentials"));
 
     }
+
+    @Override
+    public User verifyForPost(User user) throws NotAuthorizedException {
+
+        User test = this.userDAO.findUserByUsername(user);
+
+        if(test!= null){
+            if(test.getRole().equals("adm")){ return test;}
+            else{throw new NotAuthorizedException("Login Unsuccessful");}
+        }
+        else {
+            throw new NotAuthorizedException("Login Unsuccessful");
+        }
+    }
+
+
+    @Override
+    public Integer updateResult(User user) {
+        return this.userDAO.update(user);
+    }
 }

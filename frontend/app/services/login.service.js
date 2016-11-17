@@ -5,7 +5,9 @@ function loginService($http,$interpolate,$cookies) {
 
         verify: verify,
         ClearHeaders: ClearHeaders,
-        SetHeaders: SetHeaders
+        SetHeaders: SetHeaders,
+        verifyLink: verifyLink,
+        resultUpdateLink: resultUpdateLink
 
     };
 
@@ -19,6 +21,24 @@ function loginService($http,$interpolate,$cookies) {
         return $http.post(userdata(), data);
 
     }
+
+
+    function verifyLink(username, password) {
+        var data = {
+            username: username,
+            password: password
+        };
+
+        return $http.post(userdata()+'link', data);
+
+    }
+
+    function resultUpdateLink(object){
+
+        return $http.post(userdata()+'link/result',object);
+
+    }
+
 
     function ClearHeaders() {
         $http.defaults.headers.common.Authorization = 'Basic';

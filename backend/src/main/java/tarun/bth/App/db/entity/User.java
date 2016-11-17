@@ -23,6 +23,14 @@ public class User implements Principal {
     @NotEmpty
     private String role;
 
+    @JsonProperty
+    @NotEmpty
+    private Integer examId;
+
+    @JsonProperty
+    @NotEmpty
+    private Integer score;
+
     public User(){}
 
     public User(String username, String password) {
@@ -36,6 +44,16 @@ public class User implements Principal {
         this.username=username;
         this.password=password;
     }
+
+    public User(Integer id, String username, String password, String role, Integer examId, Integer score) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.examId = examId;
+        this.score = score;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -59,6 +77,22 @@ public class User implements Principal {
     public void setPassword(String password) { this.password = password;}
 
     public void setRole(String role) {this.role = role;}
+
+    public Integer getExamId() {
+        return examId;
+    }
+
+    public void setExamId(Integer examId) {
+        this.examId = examId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
 
     @Override
     public String getName() {

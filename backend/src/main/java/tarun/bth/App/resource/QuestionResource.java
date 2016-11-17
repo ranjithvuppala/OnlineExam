@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-//@RolesAllowed("ADMIN")
+@RolesAllowed("ADMIN")
 @Path("QuestionPaper")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

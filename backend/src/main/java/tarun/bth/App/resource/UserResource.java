@@ -4,6 +4,7 @@ import io.dropwizard.auth.Auth;
 import tarun.bth.App.db.entity.User;
 import tarun.bth.App.process.UserProcess;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -23,11 +24,25 @@ public class UserResource {
 
     @POST
     public User verifyLogin(User user) {
-        User test = this.userProcess.verify(user);
+        User test = this.userProcess.verifyForPost(user);
         test.setUsername(null);
         test.setPassword(null);
         test.setId(null);
         return test;
+    }
+
+
+    @Path("/link")
+    @POST
+    public User verifyLink(User user) {
+       return this.userProcess.verify(user);
+    }
+
+    @PermitAll
+    @Path("/link/result")
+    @POST
+    public Integer updateResult(User user) {
+        return this.userProcess.updateResult(user);
     }
 
 }
