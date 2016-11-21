@@ -15,6 +15,7 @@ import tarun.bth.App.auth.ExamAuthenticator;
 import tarun.bth.App.auth.ExamAuthorizer;
 import tarun.bth.App.db.*;
 import tarun.bth.App.db.entity.User;
+import tarun.bth.App.db.entity.UserExamScore;
 import tarun.bth.App.process.*;
 import tarun.bth.App.resource.*;
 
@@ -36,6 +37,7 @@ public class App extends Application<ApplicationConfiguration>{
         final ChoiceDAO choiceDAO = dbi.onDemand(ChoiceDAO.class);
         final QuestionChoiceDAO questionChoiceDAO=dbi.onDemand(QuestionChoiceDAO.class);
         final ExamQuestionDAO examQuestionDAO=dbi.onDemand(ExamQuestionDAO.class);
+        final UserExamScoreDAO userExamScoreDAO = dbi.onDemand(UserExamScoreDAO.class);
 
         // processes
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
@@ -44,15 +46,21 @@ public class App extends Application<ApplicationConfiguration>{
         QuestionChoiceProcess questionChoiceProcess = new QuestionChoiceDbImpl(questionChoiceDAO);
         ExamQuestionProcess examQuestionProcess = new ExamQuestionDbImpl(examQuestionDAO);
         QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO,questionChoiceProcess,choiceProcess);
+        UserExamScoreProcess userExamScoreProcess = new UserExamScoreProcessDbImpl(userExamScoreDAO);
+        EmailProcess emailProcess = new EmailProcessImpl();
+
 
         // resources
-        //UserResource loginResource = new UserResource()
+        UserResource loginResource = new UserResource(userProcess);
         QuestionResource questionResource = new QuestionResource(questionProcess,questionChoiceProcess,choiceProcess);
         ExamResource examResource = new ExamResource(examProcess,questionProcess,examQuestionProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
         ExamQuestionResource examQuestionResource = new ExamQuestionResource(examQuestionProcess);
         ResultResource resultResource=new ResultResource(questionProcess);
+        UserExamScoreResource userExamScoreResource = new UserExamScoreResource(userExamScoreProcess);
+        EmailResource emailResource = new EmailResource(emailProcess);
+
 
 
         // tables
@@ -62,6 +70,8 @@ public class App extends Application<ApplicationConfiguration>{
         choiceDAO.createTable();
         questionChoiceDAO.createTable();
         examQuestionDAO.createTable();
+        userExamScoreDAO.createTable();
+
 
         //insert admin into table login
          userDAO.insertAdminDetails();
@@ -69,12 +79,14 @@ public class App extends Application<ApplicationConfiguration>{
 
         //Resource registration
         environment.jersey().register(questionResource);
-        environment.jersey().register(new UserResource(userProcess));
+        environment.jersey().register(loginResource);
         environment.jersey().register(examResource);
         environment.jersey().register(choiceResource);
         environment.jersey().register(questionChoiceResource);
         environment.jersey().register(examQuestionResource);
         environment.jersey().register(resultResource);
+        environment.jersey().register(userExamScoreResource);
+        environment.jersey().register(emailResource);
 
 
         //Authentication and Authorization

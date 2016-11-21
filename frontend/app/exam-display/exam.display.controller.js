@@ -10,18 +10,31 @@ function ExamDisplayController(examService,$location,loginService){
 
     function $onInit(){
         var test = $location.search();
+        var test2 = $location.hash();
         vm.QuestionList=[];
         loginService.SetHeaders(test.foo,test.fo);
         return loginService.verifyLink(test.foo,test.fo)
             .then(function test(response){
                 vm.userDetails = response.data;
-                    var test2 = vm.userDetails.examId;
-                    vm.getExambyId(test2);
+                return examService.findExambyId(test2)
+                    .then(function test1(response){
+                        vm.examDetails = response.data;
+                        console.log(vm.examDetails);
+                        console.log(vm.userDetails);
+                        if(vm.userDetails.id === vm.examDetails.userId){
+                            console.log(vm.examDetails);
+                            var test3 = vm.examDetails.examId;
+                        }
+                        else{
+                            alert("The exam is not assigned for this User please exit");
+                        }
+                        vm.getExambyId(test3);
+                    });
             });
     }
 
-    function getExambyId(test2){
-        return examService.display(test2)
+    function getExambyId(test3){
+        return examService.display(test3)
             .then(function getExam(response){
                 vm.getExam = response.data;
             })
@@ -44,10 +57,9 @@ function ExamDisplayController(examService,$location,loginService){
         console.log(vm.QuestionList);
 
         return examService.verifyResult(vm.QuestionList)
-            .then(function resut(response){
-                vm.userDetails.score = response.data;
-                delete vm.userDetails['name'];
-                return loginService.resultUpdateLink(vm.userDetails)
+            .then(function result(response){
+                vm.examDetails.score = response.data;
+                return examService.resultUpdate(vm.examDetails)
                     .then(vm.$onInit)
                     .catch(vm.showError);
             })
@@ -59,7 +71,7 @@ function ExamDisplayController(examService,$location,loginService){
 
     function ScoreNotEmpty(){
 
-        if(vm.userDetails.score !== null){return true;}
+        if(vm.examDetails.score !== null){return true;}
         else{return false;}
     }
 
@@ -70,6 +82,7 @@ function ExamDisplayController(examService,$location,loginService){
     function redirect(){
         loginService.ClearHeaders();
         $location.search({foo:null,fo:null});
+        $location.hash(null);
         $location.path('/');
     }
 

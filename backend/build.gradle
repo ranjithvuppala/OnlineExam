@@ -20,5 +20,10 @@ dependencies {
     compile group: 'com.h2database', name: 'h2', version: '1.4.192'
     compile group: 'io.dropwizard', name: 'dropwizard-auth', version: '1.0.0'
     compile group: 'javax.mail', name: 'javax.mail-api', version: '1.5.6'
+    compile group: 'com.sun.mail', name: 'smtp', version: '1.4.5'
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.24'
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-common', version: '2.24'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-multipart', version: '2.24'
 
 }
