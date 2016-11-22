@@ -12,7 +12,5 @@ public interface ChoiceProcess {
     Choice update(Integer choice_id, Choice choice) throws NotFoundException;
     Choice find(Integer choice_id) throws NotFoundException;
     void delete(Integer choice_id);
-    List<Choice> findList(List<Integer> choice_id_list) throws NotFoundException;
 
-    //List<QuestionName> getOnlyQuestions();
 }

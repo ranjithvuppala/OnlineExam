@@ -3,12 +3,15 @@ package tarun.bth.App.resource;
 import tarun.bth.App.db.entity.Question;
 import tarun.bth.App.process.QuestionProcess;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+@PermitAll
 @Path("Result")
+
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ResultResource {

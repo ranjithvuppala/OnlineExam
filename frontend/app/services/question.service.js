@@ -5,11 +5,16 @@ function questionService($http, $interpolate) {
         list: list,
         create: create,
         destroy: destroy,
-        update: update
+        update: update,
+        list1: list1
     };
 
     function list() {
         return $http.get(question());
+    }
+
+    function list1(){
+        return $http.get('/api/QuestionPaper/all');
     }
 
     function create(quest) {

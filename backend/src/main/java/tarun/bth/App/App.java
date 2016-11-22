@@ -41,19 +41,19 @@ public class App extends Application<ApplicationConfiguration>{
 
         // processes
         UserProcess userProcess = new UserProcessDbImpl(userDAO);
-        ExamProcess examProcess = new ExamProcessDbImpl(examDAO);
-        ChoiceProcess choiceProcess = new ChoiceProcessDbImpl(choiceDAO);
         QuestionChoiceProcess questionChoiceProcess = new QuestionChoiceDbImpl(questionChoiceDAO);
         ExamQuestionProcess examQuestionProcess = new ExamQuestionDbImpl(examQuestionDAO);
-        QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO,questionChoiceProcess,choiceProcess);
+        QuestionProcess questionProcess = new QuestionProcessDbImpl(questionDAO,questionChoiceDAO,choiceDAO,examQuestionDAO);
+        ChoiceProcess choiceProcess = new ChoiceProcessDbImpl(choiceDAO, questionChoiceDAO, questionDAO,questionProcess);
         UserExamScoreProcess userExamScoreProcess = new UserExamScoreProcessDbImpl(userExamScoreDAO);
         EmailProcess emailProcess = new EmailProcessImpl();
+        ExamProcess examProcess = new ExamProcessDbImpl(examDAO,examQuestionDAO,questionProcess);
 
 
         // resources
         UserResource loginResource = new UserResource(userProcess);
-        QuestionResource questionResource = new QuestionResource(questionProcess,questionChoiceProcess,choiceProcess);
-        ExamResource examResource = new ExamResource(examProcess,questionProcess,examQuestionProcess);
+        QuestionResource questionResource = new QuestionResource(questionProcess);
+        ExamResource examResource = new ExamResource(examProcess);
         ChoiceResource choiceResource = new ChoiceResource(choiceProcess);
         QuestionChoiceResource questionChoiceResource = new QuestionChoiceResource(questionChoiceProcess);
         ExamQuestionResource examQuestionResource = new ExamQuestionResource(examQuestionProcess);

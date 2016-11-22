@@ -29,14 +29,16 @@ public class ExamQuestionDbImpl implements ExamQuestionProcess {
 
     @Override
     public List<Integer> find(int exam_id) {
+        return this.examQuestionDAO.findExamQuestionById(exam_id);
+    }
 
-        List<Integer> questionIdList = new ArrayList<Integer>();
-        List<ExamQuestion> examQuestionList = this.examQuestionDAO.findExamQuestionById(exam_id);
+    @Override
+    public void deleteByExamId(int exam_id) {
+        this.examQuestionDAO.deleteByExamId(exam_id);
+    }
 
-        for(ExamQuestion i : examQuestionList){
-
-            questionIdList.add(i.getQuestion_id());
-        }
-        return questionIdList;
+    @Override
+    public void deleteByQuestionId(int question_id) {
+        this.examQuestionDAO.deleteByQuestionId(question_id);
     }
 }

@@ -38,11 +38,4 @@ public class UserResource {
        return this.userProcess.verify(user);
     }
 
-    @PermitAll
-    @Path("/link/result")
-    @POST
-    public Integer updateResult(User user) {
-        return this.userProcess.updateResult(user);
-    }
-
 }

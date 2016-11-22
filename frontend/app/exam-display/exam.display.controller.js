@@ -19,10 +19,7 @@ function ExamDisplayController(examService,$location,loginService){
                 return examService.findExambyId(test2)
                     .then(function test1(response){
                         vm.examDetails = response.data;
-                        console.log(vm.examDetails);
-                        console.log(vm.userDetails);
                         if(vm.userDetails.id === vm.examDetails.userId){
-                            console.log(vm.examDetails);
                             var test3 = vm.examDetails.examId;
                         }
                         else{
@@ -37,6 +34,7 @@ function ExamDisplayController(examService,$location,loginService){
         return examService.display(test3)
             .then(function getExam(response){
                 vm.getExam = response.data;
+                console.log(vm.getExam);
             })
     }
 
@@ -54,7 +52,6 @@ function ExamDisplayController(examService,$location,loginService){
             vm.QuestionList[i].correctChoice_id = values[i];
         }
 
-        console.log(vm.QuestionList);
 
         return examService.verifyResult(vm.QuestionList)
             .then(function result(response){

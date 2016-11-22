@@ -1,6 +1,8 @@
 package tarun.bth.App.process;
 
 import tarun.bth.App.db.ChoiceDAO;
+import tarun.bth.App.db.QuestionChoiceDAO;
+import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.entity.Choice;
 
 
@@ -14,8 +16,17 @@ public class ChoiceProcessDbImpl implements ChoiceProcess {
 
     private ChoiceDAO choiceDAO;
 
-    public ChoiceProcessDbImpl(ChoiceDAO choiceDAO) {
+    private QuestionChoiceDAO questionChoiceDAO;
+
+    private QuestionDAO questionDAO;
+
+    private QuestionProcess questionProcess;
+
+    public ChoiceProcessDbImpl(ChoiceDAO choiceDAO, QuestionChoiceDAO questionChoiceDAO, QuestionDAO questionDAO, QuestionProcess questionProcess) {
         this.choiceDAO = choiceDAO;
+        this.questionChoiceDAO = questionChoiceDAO;
+        this.questionDAO  = questionDAO;
+        this.questionProcess = questionProcess;
     }
 
     @Override
@@ -48,19 +59,12 @@ public class ChoiceProcessDbImpl implements ChoiceProcess {
     @Override
     public void delete(Integer choice_id) {
         this.choiceDAO.delete(choice_id);
-    }
+        this.questionChoiceDAO.deleteByChoiceId(choice_id);
+        List<Integer> questionIdList = this.questionDAO.findByCorrectChoiceId(choice_id);
 
-    @Override
-    public List<Choice> findList(List<Integer> choice_id_list) throws NotFoundException {
-
-        List<Choice> choiceList = new ArrayList<Choice>();
-        for(Integer i : choice_id_list){
-
-           choiceList.add(this.choiceDAO.findChoiceById(i));
-
+        for (Integer i:questionIdList){
+            this.questionProcess.delete(i);
         }
-
-        return choiceList;
-
     }
+
 }

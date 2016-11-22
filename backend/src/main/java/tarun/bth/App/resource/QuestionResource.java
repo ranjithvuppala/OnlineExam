@@ -4,6 +4,7 @@ import tarun.bth.App.db.entity.Choice;
 import tarun.bth.App.db.entity.Question;
 import tarun.bth.App.db.entity.QuestionResponse;
 import tarun.bth.App.process.ChoiceProcess;
+import tarun.bth.App.process.ExamQuestionProcess;
 import tarun.bth.App.process.QuestionChoiceProcess;
 import tarun.bth.App.process.QuestionProcess;
 
@@ -21,21 +22,21 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class QuestionResource {
     private QuestionProcess questionProcess;
 
-    private QuestionChoiceProcess questionChoiceProcess;
 
-    private ChoiceProcess choiceProcess;
-
-
-    public QuestionResource(QuestionProcess questionProcess, QuestionChoiceProcess questionChoiceProcess, ChoiceProcess choiceProcess) {
+    public QuestionResource(QuestionProcess questionProcess) {
         this.questionProcess = checkNotNull(questionProcess);
-        this.questionChoiceProcess = checkNotNull(questionChoiceProcess);
-        this.choiceProcess = checkNotNull(choiceProcess);
 
     }
 
     @GET
-    public List<Question> getAllQuestions() {
+    public List<QuestionResponse> getAllQuestions() {
         return this.questionProcess.getAllQuestions();
+    }
+
+    @Path("/all")
+    @GET
+    public List<Question> getAll() {
+        return this.questionProcess.getAll();
     }
 
    @POST
@@ -47,15 +48,7 @@ public class QuestionResource {
     @Path("/{question_id}")
     public QuestionResponse getQuestionById(@PathParam("question_id") int question_id) {
 
-        List<Integer> choiceIdList = this.questionChoiceProcess.find(question_id);
-        List<Choice> choiceList = this.choiceProcess.findList(choiceIdList);
-        Question question= this.questionProcess.find(question_id);
-        question.setCorrectChoice_id(null);
-        QuestionResponse questionResponse = new QuestionResponse(question,choiceList);
-        questionResponse.setQuestion(question);
-        questionResponse.setChoiceList(choiceList);
-
-        return questionResponse;
+        return questionProcess.find(question_id);
     }
 
     @PUT

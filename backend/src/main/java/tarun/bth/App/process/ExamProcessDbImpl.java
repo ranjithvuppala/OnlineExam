@@ -2,8 +2,11 @@ package tarun.bth.App.process;
 
 
 import tarun.bth.App.db.ExamDAO;
+import tarun.bth.App.db.ExamQuestionDAO;
 import tarun.bth.App.db.QuestionDAO;
 import tarun.bth.App.db.entity.Exam;
+import tarun.bth.App.db.entity.ExamResponse;
+import tarun.bth.App.db.entity.QuestionResponse;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
@@ -13,8 +16,13 @@ import java.util.Optional;
 public class ExamProcessDbImpl implements ExamProcess {
 
     private ExamDAO examDAO;
-    public ExamProcessDbImpl(ExamDAO examDAO) {
+    private ExamQuestionDAO examQuestionDAO;
+    private QuestionProcess questionProcess;
+
+    public ExamProcessDbImpl(ExamDAO examDAO, ExamQuestionDAO examQuestionDAO, QuestionProcess questionProcess) {
         this.examDAO = examDAO;
+        this.examQuestionDAO= examQuestionDAO;
+        this.questionProcess=questionProcess;
     }
 
 
@@ -46,8 +54,18 @@ public class ExamProcessDbImpl implements ExamProcess {
     @Override
     public void delete(Integer exam_id) {
         this.examDAO.delete(exam_id);
+        this.examQuestionDAO.deleteByExamId(exam_id);
     }
 
-   // @Override
-    //public List<Exam> getSelectedQuestions() {return this.examDAO.getSelectedQuestions();}
+    @Override
+    public ExamResponse findExamById(Integer exam_id) {
+        List<Integer> questionIdList = this.examQuestionDAO.findExamQuestionById(exam_id);
+        List<QuestionResponse> questionResponseList = this.questionProcess.findList(questionIdList);
+        Exam exam= this.find(exam_id);
+        ExamResponse examResponse = new ExamResponse(exam,questionResponseList);
+        examResponse.setExam(exam);
+        examResponse.setQuestionResponseList(questionResponseList);
+
+        return examResponse;
+    }
 }

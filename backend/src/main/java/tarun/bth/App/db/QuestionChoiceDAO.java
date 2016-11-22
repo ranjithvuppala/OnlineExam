@@ -17,10 +17,13 @@ public interface QuestionChoiceDAO {
     int create(@BindBean QuestionChoice questionChoice);
 
     @SqlUpdate("DELETE FROM `QuestionChoice` WHERE choice_id = :choice_id")
-    int delete(@Bind("choice_id") int choice_id);
+    int deleteByChoiceId(@Bind("choice_id") int choice_id);
 
-    @SqlQuery("SELECT * FROM `QuestionChoice` WHERE question_id = :question_id")
-    List<QuestionChoice> findQuestionChoiceById(@Bind("question_id") int question_id);
+    @SqlUpdate("DELETE FROM `QuestionChoice` WHERE question_id = :question_id")
+    int deleteByQuestionId(@Bind("question_id") int question_id);
+
+    @SqlQuery("SELECT choice_id FROM `QuestionChoice` WHERE question_id = :question_id")
+    List<Integer> findQuestionChoiceById(@Bind("question_id") int question_id);
 
 
 }

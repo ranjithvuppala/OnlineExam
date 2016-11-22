@@ -22,14 +22,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ExamResource {
     private ExamProcess examProcess;
 
-    private QuestionProcess questionProcess;
 
-    private ExamQuestionProcess examQuestionProcess;
-
-    public ExamResource(ExamProcess examProcess, QuestionProcess questionProcess, ExamQuestionProcess examQuestionProcess) {
+    public ExamResource(ExamProcess examProcess) {
         this.examProcess = checkNotNull(examProcess);
-        this.questionProcess = checkNotNull(questionProcess);
-        this.examQuestionProcess = checkNotNull(examQuestionProcess);
     }
 
     @GET
@@ -45,14 +40,7 @@ public class ExamResource {
     @PermitAll
     @Path("/{exam_id}")
     public ExamResponse getExamById(@PathParam("exam_id") int exam_id) {
-        List<Integer> questionIdList = this.examQuestionProcess.find(exam_id);
-        List<QuestionResponse> questionResponseList = this.questionProcess.findList(questionIdList);
-        Exam exam= this.examProcess.find(exam_id);
-        ExamResponse examResponse = new ExamResponse(exam,questionResponseList);
-        examResponse.setExam(exam);
-        examResponse.setQuestionResponseList(questionResponseList);
-
-        return examResponse;
+        return this.examProcess.findExamById(exam_id);
     }
 
     @PUT

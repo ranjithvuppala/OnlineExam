@@ -25,7 +25,6 @@ public interface UserDAO {
     public User findUserById(@Bind("id") int id);
 
     @SqlQuery("SELECT * FROM user WHERE username= :username AND password = :password")
-   // public User findUserByUsername(@Bind("username") String username,@Bind("password") String password);
     public User findUserByUsername(@BindBean User user);
 
     @SqlUpdate("INSERT INTO `user` VALUES(:id,:username,:password)")

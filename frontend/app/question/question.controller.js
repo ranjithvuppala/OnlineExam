@@ -11,6 +11,7 @@ function QuestionController(questionService,questionChoiceService,choiceService)
     vm.showError = showError;
     vm.submittedQuestionEmpty = submittedQuestionEmpty;
     vm.selectedChoicesEmpty = selectedChoicesEmpty;
+    vm.destroy = destroy;
 
     function $onInit() {
         var parentControllerHasSetData = angular.isDefined(vm.data);
@@ -19,11 +20,17 @@ function QuestionController(questionService,questionChoiceService,choiceService)
         vm.questionWithCorrectChoice = {question_id:null,question:null,correctChoice_id:null};
         vm.QuestionChoice = [];
         vm.correctOption = null;
-        return choiceService.list().then(function retrievedOptions(response) {
-            vm.left = response.data;
-            vm.right = [];
-        });
-
+        return questionService.list()
+            .then(function test(response) {
+                vm.QuestionList = response.data;
+                console.log(vm.QuestionList);
+                return choiceService.list()
+                    .then(function retrievedOptions(response) {
+                        vm.left = response.data;
+                        vm.right = [];
+                    });
+            })
+            .catch(vm.showError);
     }
 
     function onUserDidSubmit1(question) {
@@ -108,5 +115,13 @@ function QuestionController(questionService,questionChoiceService,choiceService)
     function selectedChoicesEmpty() {
         return vm.right.length > 0;
     }
+
+
+    function destroy(id){
+        return questionService.destroy(id)
+            .then(vm.$onInit)
+            .catch(vm.showError);
+    }
+
 }
 

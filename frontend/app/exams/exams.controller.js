@@ -17,7 +17,7 @@ function ExamsController(questionService,examService,examQuestionService) {
         vm.exam = parentControllerHasSetData ? vm.data.exam : '';
         vm.submittedExamTitle = [];
         vm.ExamQuestion = [];
-        return questionService.list().then(function retrievedQuestions(response) {
+        return questionService.list1().then(function retrievedQuestions(response) {
             vm.left = response.data;
             vm.right = [];
         });

@@ -28,13 +28,5 @@ public class ExamQuestionResource {
         return this.examQuestionProcess.create(examQuestion);
     }
 
-/*
-    @GET
-    @Path("/{exam_id}")
-    public List<ExamQuestion> getExamQuestion(@PathParam("exam_id") int exam_id) {
-        return this.examQuestionProcess.find(exam_id);
-    }
-*/
-
 
 }

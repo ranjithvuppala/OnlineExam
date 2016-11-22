@@ -22,10 +22,11 @@
 
     </form>
 
-        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
+
 
     </div>
     <div class="row" ng-if="vm.submittedQuestionEmpty()">
+        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
 
         <h4>Please select choices from the below list</h4>
 
@@ -60,10 +61,10 @@
 
     </div>
 
-    <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
-
 
     <div class="row"  ng-if="vm.selectedChoicesEmpty()">
+
+        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
 
         <h4>Please select the correct option for entered Question </h4>
 
@@ -90,6 +91,31 @@
             </form>
         </div>
     </div>
+
+    <div class="row" ng-if="!vm.submittedQuestionEmpty()">
+        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
+
+        <div class="col-xs-6" ng-repeat="QuestionResponse in vm.QuestionList">
+            <div class="panel panel-default col-xs-10">
+            <div class="panel-heading col-xs-12">
+                <h3 class="panel-title pull-left">Question : {{QuestionResponse.question.question}}</h3>
+                <button  class="btn btn-xs btn-danger pull-right" ng-click="vm.destroy(QuestionResponse.question.question_id)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="panel-body" ng-repeat = "choice in QuestionResponse.choiceList">
+                {{choice.choice}}
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+
 </div>
 
 

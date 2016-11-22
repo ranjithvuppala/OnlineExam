@@ -9,6 +9,5 @@ public interface UserProcess {
 
     User verify(User user);
     User verifyForPost(User user);
-    Integer updateResult(User user);
 
 }

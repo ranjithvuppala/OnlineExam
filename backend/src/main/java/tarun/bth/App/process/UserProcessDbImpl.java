@@ -33,9 +33,4 @@ public class UserProcessDbImpl implements UserProcess {
         }
     }
 
-
-    @Override
-    public Integer updateResult(User user) {
-        return this.userDAO.update(user);
-    }
 }

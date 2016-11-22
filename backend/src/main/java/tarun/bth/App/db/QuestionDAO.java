@@ -24,6 +24,9 @@ public interface QuestionDAO {
     @SqlQuery("SELECT * FROM `Question` WHERE question_id = :question_id")
     public Question findQuestionById(@Bind("question_id") int question_id);
 
+    @SqlQuery("SELECT question_id FROM `Question` WHERE correctChoice_id = :correctChoice_id")
+    public List<Integer> findByCorrectChoiceId(@Bind("correctChoice_id") int correctChoice_id);
+
     @SqlQuery("SELECT correctChoice_id FROM `Question` WHERE question_id = :question_id")
     public int findCorrectChoiceByQuestionId(@Bind("question_id") int question_id);
 
@@ -33,5 +36,9 @@ public interface QuestionDAO {
 
     @SqlUpdate("DELETE FROM `Question` WHERE question_id = :question_id")
     int delete(@Bind("question_id") int question_id);
+
+
+    @SqlUpdate("DELETE FROM `Question` WHERE correctChoice_id = :correctChoice_id")
+    int deleteByCorrectOptionId(@Bind("correctChoice_id") int correctChoice_id);
 
 }

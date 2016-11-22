@@ -2,6 +2,8 @@ package tarun.bth.App.resource;
 
 import tarun.bth.App.db.entity.Choice;
 import tarun.bth.App.process.ChoiceProcess;
+import tarun.bth.App.process.QuestionChoiceProcess;
+import tarun.bth.App.process.QuestionProcess;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
@@ -16,7 +18,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChoiceResource {
-    private  ChoiceProcess choiceProcess;
+    private ChoiceProcess choiceProcess;
+
 
     public ChoiceResource(ChoiceProcess choiceProcess) {
         this.choiceProcess = checkNotNull(choiceProcess);
@@ -42,14 +45,5 @@ public class ChoiceResource {
     public Choice updateChoice(@PathParam("choice_id") int choice_id, Choice choice){
         return this.choiceProcess.update(choice_id, choice);
     }
-
-    @POST
-    @Path("/test")
-    public List<Choice> findbylist(List<Integer> intlist){
-
-        return this.choiceProcess.findList(intlist);
-    }
-
-
 
 }

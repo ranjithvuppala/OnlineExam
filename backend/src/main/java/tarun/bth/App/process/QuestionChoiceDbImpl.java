@@ -27,15 +27,17 @@ public class QuestionChoiceDbImpl implements QuestionChoiceProcess{
 
     @Override
     public List<Integer> find(int question_id) {
+       return this.questionChoiceDAO.findQuestionChoiceById(question_id);
+    }
 
-        List<Integer> choiceIdList = new ArrayList<Integer>();
-        List<QuestionChoice> questionChoiceList = this.questionChoiceDAO.findQuestionChoiceById(question_id);
+    @Override
+    public void deleteByChoiceId(int choice_id) {
+        this.questionChoiceDAO.deleteByChoiceId(choice_id);
+    }
 
-        for(QuestionChoice i : questionChoiceList){
-
-            choiceIdList.add(i.getChoice_id());
-        }
-        return choiceIdList;
+    @Override
+    public void deleteByQuestionId(int question_id) {
+        this.questionChoiceDAO.deleteByQuestionId(question_id);
     }
 }
 

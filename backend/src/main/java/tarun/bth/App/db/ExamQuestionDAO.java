@@ -17,13 +17,14 @@ public interface ExamQuestionDAO {
     @GetGeneratedKeys
     int create(@BindBean ExamQuestion examQuestion);
 
+    @SqlUpdate("DELETE FROM `ExamQuestion` WHERE exam_id = :exam_id")
+    int deleteByExamId(@Bind("exam_id") int exam_id);
+
     @SqlUpdate("DELETE FROM `ExamQuestion` WHERE question_id = :question_id")
-    int delete(@Bind("choice_id") int question_id);
+    int deleteByQuestionId(@Bind("question_id") int question_id);
 
-    @SqlQuery("SELECT * FROM `ExamQuestion` WHERE exam_id = :exam_id")
+    @SqlQuery("SELECT question_id FROM `ExamQuestion` WHERE exam_id = :exam_id")
     @GetGeneratedKeys
-    List<ExamQuestion> findExamQuestionById(@Bind("exam_id") int exam_id);
+    List<Integer> findExamQuestionById(@Bind("exam_id") int exam_id);
 
-    //@SqlQuery("SELECT * FROM `ExamQuestion` WHERE exam_id = :exam_id")
-    //public ExamQuestion findExamQuestionById(@Bind("exam_id") int exam_id);
 }
