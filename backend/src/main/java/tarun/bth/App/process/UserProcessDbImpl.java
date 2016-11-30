@@ -5,6 +5,7 @@ import tarun.bth.App.db.entity.User;
 
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.NotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 public class UserProcessDbImpl implements UserProcess {
@@ -33,4 +34,14 @@ public class UserProcessDbImpl implements UserProcess {
         }
     }
 
+    @Override
+    public User create(User user) {
+        return this.userDAO.findUserById(this.userDAO.create(user));
+    }
+
+
+    @Override
+    public List<User> getList(String role) {
+        return this.userDAO.getUsersByRole(role);
+    }
 }

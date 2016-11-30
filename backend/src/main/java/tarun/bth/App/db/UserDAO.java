@@ -11,14 +11,14 @@ import java.util.List;
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface UserDAO {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS user(id int auto_increment primary key, username varchar(12), password varchar(12), role varchar(12))")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS user(id int auto_increment primary key, username varchar(100), password varchar(100), role varchar(12), UNIQUE(username))")
     public void createTable();
 
     @SqlUpdate("Merge into user values(0,'admin','admin','adm')")
     public void insertAdminDetails();
 
-    @SqlQuery("SELECT * FROM user;")
-    public List<User> getAllLogin();
+    @SqlQuery("SELECT * FROM user WHERE role = :role")
+    public List<User> getUsersByRole(@Bind("role") String role);
 
 
     @SqlQuery("SELECT * FROM user WHERE id = :id")
@@ -27,7 +27,7 @@ public interface UserDAO {
     @SqlQuery("SELECT * FROM user WHERE username= :username AND password = :password")
     public User findUserByUsername(@BindBean User user);
 
-    @SqlUpdate("INSERT INTO `user` VALUES(:id,:username,:password)")
+    @SqlUpdate("INSERT INTO `user` VALUES(:id,:username,:password,:role)")
     @GetGeneratedKeys
     public int create(@BindBean User user);
 

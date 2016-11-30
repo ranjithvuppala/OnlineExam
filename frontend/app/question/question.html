@@ -26,14 +26,14 @@
 
     </div>
     <div class="row" ng-if="vm.submittedQuestionEmpty()">
-        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
+        <div class="row"><div class="col-xs-12" style = "height: 50px;"></div></div>
 
         <h4>Please select choices from the below list</h4>
 
         <div class="row">
 
             <div class="col-xs-5">
-                <select class="form-control" ng-model="vm.leftSelect" multiple ng-options="option.choice for option in vm.left track by option.choice_id"><option>{{option.choice}}</option></select>
+                <select class="form-control"  style = "height: 200px; "ng-model="vm.leftSelect" multiple ng-options="option.choice for option in vm.left track by option.choice_id"><option>{{option.choice}}</option></select>
             </div>
 
             <div class="col-xs-2 text-center">
@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-xs-5">
-                <select class="form-control" ng-model="vm.rightSelect" multiple ng-options="option.choice for option in vm.right track by option.choice_id"><option>{{option.choice}}</option></select>
+                <select class="form-control"  style = "height: 200px; " ng-model="vm.rightSelect" multiple ng-options="option.choice for option in vm.right track by option.choice_id"><option>{{option.choice}}</option></select>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
 
     <div class="row"  ng-if="vm.selectedChoicesEmpty()">
 
-        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
+        <div class="row"><div class="col-xs-12" style = "height: 50px;"></div></div>
 
         <h4>Please select the correct option for entered Question </h4>
 
@@ -93,13 +93,14 @@
     </div>
 
     <div class="row" ng-if="!vm.submittedQuestionEmpty()">
-        <div class="row"><div class="col-xs-12" style = "height: 100px;"></div></div>
+        <div class="row"><div class="col-xs-12" style = "height: 50px;"></div></div>
 
         <div class="col-xs-6" ng-repeat="QuestionResponse in vm.QuestionList">
-            <div class="panel panel-default col-xs-10">
-            <div class="panel-heading col-xs-12">
+            <div class="panel panel-default">
+            <div class="panel-heading">
                 <h3 class="panel-title pull-left">Question : {{QuestionResponse.question.question}}</h3>
                 <button  class="btn btn-xs btn-danger pull-right" ng-click="vm.destroy(QuestionResponse.question.question_id)">
+                    Delete
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
                 <div class="clearfix"></div>

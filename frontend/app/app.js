@@ -20,6 +20,7 @@ angular.module('app', ['ngRoute','ngCookies'])
 
     //.......................................................................
     .factory('questionService', questionService )
+    .factory('mailService', mailService )
     //........................................................................
 
     .factory('choiceService', choiceService )
@@ -83,6 +84,16 @@ angular.module('app', ['ngRoute','ngCookies'])
             controller : QuestionController,
             controllerAs : 'vm'
     })
+    .component('userMaintenance',{
+            templateUrl: 'app/user-maintenance/user-maintenance.html',
+            controller : UserMaintenanceController,
+            controllerAs : 'vm'
+    })
+    .component('userExam',{
+        templateUrl: 'app/user-exam/user-exam.html',
+        controller : UserExamController,
+        controllerAs : 'vm'
+    })
 
     .component('exams',{
         templateUrl: 'app/exams/exams.html',
@@ -99,10 +110,7 @@ angular.module('app', ['ngRoute','ngCookies'])
     .config(appConfig)
     .run(run);
 
-function run($location,$http,$cookies){
-
-    var test = $location.path();
-    console.log(test);
+function run($http,$cookies){
     var authdata = $cookies.get('authdata')|| null;
 
     if (authdata!= null){

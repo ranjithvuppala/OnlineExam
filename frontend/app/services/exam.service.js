@@ -2,13 +2,16 @@ function examService($http,$interpolate) {
     var userdata = $interpolate('/api/Exam/{{exam_id}}');
     var result = $interpolate('/api/Result');
     var userexam = $interpolate('/api/userExam/{{Id}}');
+    var user = $interpolate('/api/userExam/user/{{userId}}');
 
     return {
         create: create,
         display: display,
         verifyResult: verifyResult,
         findExambyId: findExambyId,
-        resultUpdate: resultUpdate
+        resultUpdate: resultUpdate,
+        examList: examList,
+        examListAssignedToUser: examListAssignedToUser
     };
 
 
@@ -17,6 +20,14 @@ function examService($http,$interpolate) {
             exam:exam
         };
         return $http.post(userdata(), data);
+    }
+
+    function examList(){
+        return $http.get(userdata());
+    }
+
+    function examListAssignedToUser(userId){
+        return $http.get(user({userId:userId}))
     }
 
     function display(exam_id){

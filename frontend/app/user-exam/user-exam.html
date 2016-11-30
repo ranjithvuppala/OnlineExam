@@ -1,0 +1,12 @@
+<div class="container">
+    <navigation1 class="row"></navigation1>
+    <div class="row">
+        <div class="col-xs-6">
+            <h5>Please choose a student whom you want to see the details</h5>
+        </div>
+        <div class="col-xs-6">
+            <select class="form-control" ng-model="vm.SelectedUser" ng-options="option.username for option in vm.UserList track by option.id" ng-change="vm.getUserExamDetails(vm.SelectedUser)">
+            </select>
+        </div>
+    </div>
+</div>

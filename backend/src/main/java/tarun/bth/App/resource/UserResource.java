@@ -5,8 +5,11 @@ import tarun.bth.App.db.entity.User;
 import tarun.bth.App.process.UserProcess;
 
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,11 +34,24 @@ public class UserResource {
         return test;
     }
 
-
     @Path("/link")
     @POST
     public User verifyLink(User user) {
        return this.userProcess.verify(user);
+    }
+
+    @RolesAllowed("ADMIN")
+    @Path("/addUser")
+    @POST
+    public User create(User user) {
+       return this.userProcess.create(user);
+    }
+
+    @RolesAllowed("ADMIN")
+    @Path("/getList")
+    @GET
+    public List<User> getList(@QueryParam("role") String role){
+      return this.userProcess.getList(role);
     }
 
 }

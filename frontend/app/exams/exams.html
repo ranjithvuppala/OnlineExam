@@ -28,7 +28,7 @@
     <div class="row" ng-if="vm.submittedExamTitleNotEmpty()">
 
         <div class="col-xs-5">
-            <select class="form-control" ng-model="vm.leftSelect" multiple ng-options="option.question for option in vm.left track by option.question_id"><option>{{option.question}}</option></select>
+            <select class="form-control" style = "height: 200px;" ng-model="vm.leftSelect" multiple ng-options="option.question for option in vm.left track by option.question_id"><option>{{option.question}}</option></select>
         </div>
 
         <div class="col-xs-2 text-center">
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-xs-5">
-            <select class="form-control" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id"><option>{{option.question}}</option></select>
+            <select class="form-control" style = "height: 200px;" ng-model="vm.rightSelect" multiple ng-options="option.question for option in vm.right track by option.question_id"><option>{{option.question}}</option></select>
         </div>
     </div>
 

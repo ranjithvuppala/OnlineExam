@@ -23,6 +23,9 @@ public interface UserExamScoreDAO {
         @SqlQuery("SELECT * FROM `UserExamScore` WHERE id = :id")
         public UserExamScore findUserExamScoreById(@Bind("id") int id);
 
+        @SqlQuery("SELECT * FROM `UserExamScore` WHERE userId = :userId")
+        public List<UserExamScore> findByUserId(@Bind("userId") int userId);
+
         @SqlUpdate("UPDATE `UserExamScore` set userId = :userId, examId = :examId, score = :score WHERE id = :id")
         int update(@BindBean UserExamScore userExamScore);
 

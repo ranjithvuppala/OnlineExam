@@ -44,6 +44,10 @@ public class User implements Principal {
         this.role = role;
     }
 
+    public User(String role) {
+        this.role = role;
+    }
+
     public Integer getId() {
         return id;
     }

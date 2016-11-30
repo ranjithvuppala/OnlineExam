@@ -6,8 +6,10 @@ import tarun.bth.App.db.entity.UserExamScore;
 import tarun.bth.App.process.UserExamScoreProcess;
 
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 
 @PermitAll
@@ -27,12 +29,16 @@ public class UserExamScoreResource {
        return this.userExamScoreProcess.findbyId(Id);
     }
 
+    @RolesAllowed("ADMIN")
+    @Path("/user/{UserId}")
+    @GET
+    public List<UserExamScore> findByUserId(@PathParam("UserId") Integer userId){
+     return this.userExamScoreProcess.findByUserId(userId);
+    }
+
     @Path("/result")
     @POST
     public Integer updateResult(UserExamScore userExamScore) {
         return this.userExamScoreProcess.updateResult(userExamScore);
     }
 }
-
-
-

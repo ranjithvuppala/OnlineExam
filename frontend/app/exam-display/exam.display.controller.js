@@ -12,8 +12,8 @@ function ExamDisplayController(examService,$location,loginService){
         var test = $location.search();
         var test2 = $location.hash();
         vm.QuestionList=[];
-        loginService.SetHeaders(test.foo,test.fo);
-        return loginService.verifyLink(test.foo,test.fo)
+        loginService.SetHeaders(test.foo,test.foo,'user');
+        return loginService.verifyLink(test.foo,test.foo)
             .then(function test(response){
                 vm.userDetails = response.data;
                 return examService.findExambyId(test2)
@@ -21,11 +21,13 @@ function ExamDisplayController(examService,$location,loginService){
                         vm.examDetails = response.data;
                         if(vm.userDetails.id === vm.examDetails.userId){
                             var test3 = vm.examDetails.examId;
+                            vm.getExambyId(test3);
                         }
                         else{
                             alert("The exam is not assigned for this User please exit");
+                            vm.redirect();
                         }
-                        vm.getExambyId(test3);
+
                     });
             });
     }
@@ -77,10 +79,11 @@ function ExamDisplayController(examService,$location,loginService){
     }
 
     function redirect(){
-        loginService.ClearHeaders();
-        $location.search({foo:null,fo:null});
+
+        $location.search({foo:null});
         $location.hash(null);
         $location.path('/');
+        loginService.ClearHeaders();
     }
 
 }

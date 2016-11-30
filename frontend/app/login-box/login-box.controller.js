@@ -1,4 +1,4 @@
-function LoginBoxController(loginService,$location) {
+function LoginBoxController(loginService,$location,$cookies) {
     var vm = this;
 
     vm.$onInit = $onInit;
@@ -13,7 +13,6 @@ function LoginBoxController(loginService,$location) {
         var parentControllerHasSetData = angular.isDefined(vm.data);
         vm.username = parentControllerHasSetData ? vm.data.username : '';
         vm.password  = parentControllerHasSetData ? vm.data.password  : '';
-        //loginService.ClearHeaders();
     }
 
     function onUserDidSubmit(username, password) {
@@ -23,8 +22,7 @@ function LoginBoxController(loginService,$location) {
             //console.log(response.status);
             if(response.status == 200)
             {
-                loginService.SetHeaders(username,password);
-
+                loginService.SetHeaders(username,password,response.data.role);
                 $location.path("/info1");
             }
             else{

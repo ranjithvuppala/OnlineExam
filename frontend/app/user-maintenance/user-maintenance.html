@@ -1,0 +1,51 @@
+<div class="container">
+
+    <navigation1 class ="row"></navigation1>
+    <div class="row">
+        <div class="col-xs-12">
+            <h4> Enter data for creating new user or admin  </h4>
+            <form name="vm.userDetailsForm">
+                <div class="col-xs-6">
+                    <input  id="user" name="user" class="form-control" type="email" ng-model="vm.user" placeholder="Enter User Email..." autocomplete="off" required/>
+                    <div class="col-xs-6">
+                    <h5 style="margin: 10px auto 0 auto;">Do you want the User as Admin? </h5>
+                    </div>
+                    <div class="col-xs-6" style="margin: 10px auto 0 auto;">
+                    <label class="switch" >
+                        <input type="checkbox" ng-model="vm.adminRights">
+                        <div class="slider round"></div>
+                    </label>
+                    </div>
+                    <input id="password" name="password" class="form-control" ng-model="vm.password" type = "password" placeholder="Password" required ng-if="vm.adminRights"/>
+                    <button type="submit" class="btn btn-info" ng-if="!vm.adminRights" ng-click="vm.addUser(vm.user)">
+                        Save
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <button type="submit" class="btn btn-info" ng-if="vm.adminRights" ng-click="vm.addAdmin(vm.user,vm.password)" style="margin: 10px auto 0 auto;">
+                        Save and Send Email
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row"style="margin: 50px auto 0 auto;">
+        <div class="col-xs-12"  ng-if="vm.UserListNotEmpty()">
+            <h3>List of Users</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in vm.UserList">{{item.username}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" style="margin: 50px auto 0 auto;">
+        <div class="col-xs-12" ng-if="vm.AdminListNotEmpty()">
+            <h3>List of Admins</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in vm.AdminList">{{item.username}}</li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>

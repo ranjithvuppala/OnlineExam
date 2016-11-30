@@ -4,6 +4,8 @@ package tarun.bth.App.process;
 import tarun.bth.App.db.UserExamScoreDAO;
 import tarun.bth.App.db.entity.UserExamScore;
 
+import java.util.List;
+
 public class UserExamScoreProcessDbImpl implements UserExamScoreProcess {
 
     private UserExamScoreDAO userExamScoreDAO;
@@ -20,5 +22,10 @@ public class UserExamScoreProcessDbImpl implements UserExamScoreProcess {
     @Override
     public Integer updateResult(UserExamScore userExamScore) {
         return this.userExamScoreDAO.update(userExamScore);
+    }
+
+    @Override
+    public List<UserExamScore> findByUserId(Integer userId) {
+        return this.userExamScoreDAO.findByUserId(userId);
     }
 }

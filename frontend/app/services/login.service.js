@@ -7,7 +7,8 @@ function loginService($http,$interpolate,$cookies) {
         ClearHeaders: ClearHeaders,
         SetHeaders: SetHeaders,
         verifyLink: verifyLink,
-        resultUpdateLink: resultUpdateLink
+        addUser: addUser,
+        getList: getList
 
     };
 
@@ -33,24 +34,34 @@ function loginService($http,$interpolate,$cookies) {
 
     }
 
-    function resultUpdateLink(object){
-
-        return $http.post(userdata()+'link/result',object);
-
+    function addUser(user,password,role){
+        var data={
+            username: user,
+            password: password,
+            role: role
+        };
+        return $http.post(userdata()+'addUser', data);
     }
 
 
     function ClearHeaders() {
         $http.defaults.headers.common.Authorization = 'Basic';
         $cookies.remove('authdata');
+        $cookies.remove('role');
     }
 
 
-    function SetHeaders(username, password) {
+    function SetHeaders(username, password,role) {
         var authdata = Base64.encode(username + ':' + password);
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
         $cookies.put('authdata',authdata);
-     }
+        $cookies.put('role',role);
+    }
+
+    function getList(role){
+        return $http.get(userdata()+"getList?role="+role);
+    }
+
 
 
 }

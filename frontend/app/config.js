@@ -9,6 +9,8 @@ function appConfig($routeProvider,$httpProvider) {
         .when('/createExam',{template: '<exams></exams>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/createQuestion',{template: '<question></question>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/examDisplay',{template:'<exam-display></exam-display>'})
+        .when('/UserMaintenance',{template:'<user-maintenance></user-maintenance>',resolve:{loggedIn:onlyLoggedIn}})
+        .when('/UserExam',{template:'<user-exam></user-exam>',resolve:{loggedIn:onlyLoggedIn}})
         .otherwise({
             redirectTo: '/'
 
@@ -19,9 +21,10 @@ function appConfig($routeProvider,$httpProvider) {
 var onlyLoggedIn = function ($location,$q,$cookies) {
     var deferred = $q.defer();
     var authdata = $cookies.get('authdata')|| null;
+    var role = $cookies.get('role')|| null;
 
 
-    if (authdata!= null) {
+    if (role === "adm") {
         deferred.resolve();
     }
     else {
