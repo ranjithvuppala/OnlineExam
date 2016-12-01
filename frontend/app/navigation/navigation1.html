@@ -29,12 +29,9 @@
 <!--    <ul class="nav navbar-nav" ng-if="!vm.UserIsAdmin()">
         <li><a ng-href="#/" style="color: snow">Info</a></li>
     </ul>-->
-    <form class="navbar-form navbar-right" ng-if="!vm.UserIsAdmin()">
-        <a ng-href="#/login" class="btn btn-default">
-            Login
-            <span class="glyphicon glyphicon-log-in"></span>
-            </a>
-        <a class="disabled"> &emsp14;</a>
-    </form>
+    <ul class="nav navbar-nav navbar-right" ng-if="!vm.UserIsAdmin()">
+        <li><a ng-href="#/login" style="color: snow">Login</a></li>
+        <li><a class="disabled">&emsp14;</a></li>
+    </ul>
 </nav>
 

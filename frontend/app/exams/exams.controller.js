@@ -24,6 +24,7 @@ function ExamsController(questionService,examService,examQuestionService) {
     }
 
     function onUserDidSubmit1(exam) {
+        if(vm.left.length!==0){
         return examService.create(exam)
             .then(function submittedExamTitle(response){
 
@@ -32,6 +33,10 @@ function ExamsController(questionService,examService,examQuestionService) {
                 }
             })
             .catch(vm.showError);
+        }
+        else{
+            alert("There are no Questions present to create an exam. Please create questions before creating an exam.")
+        }
     }
 
 

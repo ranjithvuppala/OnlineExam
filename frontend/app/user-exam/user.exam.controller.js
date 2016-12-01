@@ -80,6 +80,7 @@ function UserExamController($location,loginService,mailService,examService){
 
 
     function sendMail(examId,user){
+        vm.SelectedExam=null;
         var usr = JSON.parse(user);
         var data = {
             userId: usr.id,

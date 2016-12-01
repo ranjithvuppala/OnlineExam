@@ -34,6 +34,7 @@ function QuestionController(questionService,questionChoiceService,choiceService)
     }
 
     function onUserDidSubmit1(question) {
+        if(vm.left.length!==0){
         return questionService.create(question)
             .then(function submittedQuestion(response){
 
@@ -42,6 +43,10 @@ function QuestionController(questionService,questionChoiceService,choiceService)
                 }
             })
             .catch(vm.showError);
+        }
+        else{
+            alert("There are no Choices present to create a question. Please enter choices before creating any question")
+        }
     }
 
 

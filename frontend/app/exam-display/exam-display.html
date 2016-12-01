@@ -20,17 +20,17 @@
             <form ng-submit="vm.onSubmit(vm.getCorrectOptions)">
             <ol>
             <div class="row" ng-repeat="questionResponse in vm.getExam.questionResponseList">
-
-                <li>{{questionResponse.question.question}}</li>
-
-                <div class="col-xs-12"style="height: 10px;"></div>
-
-                <div class="col-xs-12" ng-repeat="choice in questionResponse.choiceList">
-                    <input class ="form-check-input" type="radio" name="{{questionResponse.question.question}}" ng-model="vm.getCorrectOptions[questionResponse.question.question_id]" ng-value="choice.choice_id" > &emsp14;{{choice.choice}}</input>
-                    <div class="col-xs-12"style="height: 10px;"></div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <li>{{questionResponse.question.question}}</li>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-xs-12" ng-repeat="choice in questionResponse.choiceList">
+                            <input class ="form-check-input" type="radio" name="{{questionResponse.question.question}}" ng-model="vm.getCorrectOptions[questionResponse.question.question_id]" ng-value="choice.choice_id" > &emsp14;{{choice.choice}}</input>
+                            <div class="col-xs-12"style="height: 10px;"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xs-12"style="height: 50px;"></div>
-
 
             </div>
             </ol>

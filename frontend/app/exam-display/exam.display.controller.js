@@ -1,4 +1,4 @@
-function ExamDisplayController(examService,$location,loginService){
+function ExamDisplayController(examService,$location,loginService,$window){
 
     var vm = this;
     vm.$onInit = $onInit;
@@ -82,8 +82,10 @@ function ExamDisplayController(examService,$location,loginService){
 
         $location.search({foo:null});
         $location.hash(null);
-        $location.path('/');
+        //$location.path('/');
         loginService.ClearHeaders();
+        $window.close();
+
     }
 
 }

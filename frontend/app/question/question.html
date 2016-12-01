@@ -1,27 +1,28 @@
 <div class="container">
     <navigation1 class="row"></navigation1>
+
     <div class="row">
-    <form name="vm.demo" ng-submit="vm.onSubmit1(vm.question)" class="panel panel-default">
-        <div class="panel-body">
-            <div class="form-group col-xs-12">
-                <label for="question">Question</label>
-                <textarea id="question" name="question" class="form-control" ng-model="vm.question" type="text" placeholder="Enter question....." autocomplete="off" required> </textarea>
-            </div>
+        <div class="col-xs-12">
+            <form name="vm.demo" ng-submit="vm.onSubmit1(vm.question)" class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group col-xs-12">
+                        <label for="question">Question</label>
+                        <textarea id="question" name="question" class="form-control" ng-model="vm.question" type="text" placeholder="Enter question....." autocomplete="off" required> </textarea>
+                    </div>
+                </div>
+
+                <div class="panel-footer text-right" ng-if="!vm.submittedQuestionEmpty()">
+                    <button type="submit" class="btn btn-xs btn-primary">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-xs" style="color:snow; background-color: black" ng-click="vm.onReset()">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        Reset
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <div class="panel-footer text-right" ng-if="!vm.submittedQuestionEmpty()">
-            <button type="submit" class="btn btn-xs btn-primary">
-                <span class="glyphicon glyphicon-ok"></span>
-                Submit
-            </button>
-            <button type="reset" class="btn btn-xs" style="color:snow; background-color: black" ng-click="vm.onReset()">
-                <span class="glyphicon glyphicon-remove-circle"></span>
-                Reset
-            </button>
-        </div>
-
-    </form>
-
 
 
     </div>
@@ -116,6 +117,7 @@
 
 
     </div>
+
 
 </div>
 

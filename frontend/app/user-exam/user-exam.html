@@ -51,12 +51,12 @@
             <h4>Select exam to be given for this User</h4>
         </div>
         <div class="col-xs-3">
-            <select class="form-control" ng-model="SelectedExam">
+            <select class="form-control" ng-model="vm.SelectedExam">
                 <option ng-repeat="exam in vm.UnassignedList" value="{{exam.exam_id}}">{{exam.exam}}</option>
             </select>
         </div>
         <div class="col-xs-3">
-        <button class="btn btn-primary" ng-click="vm.sendMail(SelectedExam,SelectedUser)">
+        <button class="btn btn-primary" ng-click="vm.sendMail(vm.SelectedExam,SelectedUser)" ng-if="vm.SelectedExam">
             Send Email
             <span class="glyphicon glyphicon-envelope"></span>
         </button>
