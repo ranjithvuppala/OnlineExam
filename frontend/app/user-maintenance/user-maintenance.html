@@ -1,6 +1,7 @@
-<div class="container">
 
+<div class="container">
     <navigation1 class ="row"></navigation1>
+
     <div class="row">
         <div class="col-xs-12">
             <h4> Enter data for creating new user or admin  </h4>
@@ -17,11 +18,11 @@
                     </label>
                     </div>
                     <input id="password" name="password" class="form-control" ng-model="vm.password" type = "password" placeholder="Password" required ng-if="vm.adminRights"/>
-                    <button type="submit" class="btn btn-info" ng-if="!vm.adminRights" ng-click="vm.addUser(vm.user)">
+                    <button type="submit" class="btn btn-primary" ng-if="!vm.adminRights" ng-click="vm.addUser(vm.user)">
                         Save
                         <span class="glyphicon glyphicon-ok"></span>
                     </button>
-                    <button type="submit" class="btn btn-info" ng-if="vm.adminRights" ng-click="vm.addAdmin(vm.user,vm.password)" style="margin: 10px auto 0 auto;">
+                    <button type="submit" class="btn btn-primary" ng-if="vm.adminRights" ng-click="vm.addAdmin(vm.user,vm.password)" style="margin: 10px auto 0 auto;">
                         Save and Send Email
                         <span class="glyphicon glyphicon-envelope"></span>
                     </button>

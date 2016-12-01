@@ -48,6 +48,7 @@ function loginService($http,$interpolate,$cookies) {
         $http.defaults.headers.common.Authorization = 'Basic';
         $cookies.remove('authdata');
         $cookies.remove('role');
+        $cookies.remove('username');
     }
 
 
@@ -56,6 +57,7 @@ function loginService($http,$interpolate,$cookies) {
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
         $cookies.put('authdata',authdata);
         $cookies.put('role',role);
+        $cookies.put('username',username);
     }
 
     function getList(role){

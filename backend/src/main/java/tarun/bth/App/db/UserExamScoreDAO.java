@@ -16,7 +16,8 @@ public interface UserExamScoreDAO {
         @SqlQuery("SELECT * FROM UserExamScore")
         public List<UserExamScore> getUserExamScores();
 
-        @SqlUpdate("INSERT INTO `UserExamScore` VALUES(:userId,:examId)")
+        @SqlUpdate("INSERT INTO `UserExamScore` VALUES(:id,:userId,:examId,:score)")
+        @GetGeneratedKeys
         int create(@BindBean UserExamScore UserExamScore);
 
 

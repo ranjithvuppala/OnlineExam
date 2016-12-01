@@ -1,9 +1,17 @@
 package tarun.bth.App.db.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Choice {
+    @JsonProperty
     private Integer choice_id;
 
+    @JsonProperty
+    @NotEmpty
+    @Length(max=100, message="Choice must not be longer than 100 characters")
     private String choice;
 
     public Choice(Integer choice_id, String choice) {

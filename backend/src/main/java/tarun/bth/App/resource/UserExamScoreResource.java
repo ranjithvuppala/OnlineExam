@@ -36,6 +36,13 @@ public class UserExamScoreResource {
      return this.userExamScoreProcess.findByUserId(userId);
     }
 
+
+    @RolesAllowed("ADMIN")
+    @POST
+    public UserExamScore create(UserExamScore userExamScore){
+        return this.userExamScoreProcess.create(userExamScore);
+    }
+
     @Path("/result")
     @POST
     public Integer updateResult(UserExamScore userExamScore) {

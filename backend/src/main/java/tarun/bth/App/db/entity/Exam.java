@@ -1,11 +1,17 @@
 package tarun.bth.App.db.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Exam {
-
+    @JsonProperty
     private Integer exam_id;
 
+    @JsonProperty
+    @NotEmpty
+    @Length(max=25, message="must not be longer than 25 characters")
     private String exam;
 
     public Exam(){}

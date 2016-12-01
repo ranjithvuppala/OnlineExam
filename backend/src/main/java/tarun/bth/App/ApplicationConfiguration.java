@@ -1,7 +1,6 @@
 package tarun.bth.App;
 
 import com.bazaarvoice.dropwizard.assets.AssetsBundleConfiguration;
-import com.bazaarvoice.dropwizard.assets.AssetsBundleConfiguration;
 import com.bazaarvoice.dropwizard.assets.AssetsConfiguration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;

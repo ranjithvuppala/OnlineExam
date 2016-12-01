@@ -9,6 +9,7 @@ import tarun.bth.App.process.QuestionProcess;
 
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -33,7 +34,7 @@ public class ExamResource {
     }
 
     @POST
-    public Exam create(Exam exam) {
+    public Exam create(@Valid Exam exam) {
         return this.examProcess.create(exam);
     }
     @GET

@@ -6,6 +6,7 @@ import tarun.bth.App.process.QuestionChoiceProcess;
 import tarun.bth.App.process.QuestionProcess;
 
 import javax.annotation.security.RolesAllowed;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ChoiceResource {
     }
 
     @POST
-    public Choice createChoice(Choice choice) {
+    public Choice createChoice(@Valid Choice choice) {
         return this.choiceProcess.create(choice);
     }
 

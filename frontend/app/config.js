@@ -2,8 +2,8 @@ function appConfig($routeProvider,$httpProvider) {
 
     $httpProvider.interceptors.push('loginInterceptor');
     $routeProvider
-        .when('/', {template: '<login-page></login-page>'})
-        .when('/info', {template: '<info></info>'})
+        .when('/login', {template: '<login-page></login-page>'})
+        .when('/', {template: '<info></info>'})
         .when('/info1', {template: '<info1></info1>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/choices', {template: '<choices></choices>',resolve:{loggedIn:onlyLoggedIn}})
         .when('/createExam',{template: '<exams></exams>',resolve:{loggedIn:onlyLoggedIn}})

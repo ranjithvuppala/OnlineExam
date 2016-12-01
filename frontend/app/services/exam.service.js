@@ -11,7 +11,8 @@ function examService($http,$interpolate) {
         findExambyId: findExambyId,
         resultUpdate: resultUpdate,
         examList: examList,
-        examListAssignedToUser: examListAssignedToUser
+        examListAssignedToUser: examListAssignedToUser,
+        assignExamToUser: assignExamToUser
     };
 
 
@@ -46,6 +47,10 @@ function examService($http,$interpolate) {
 
     function resultUpdate(score){
         return $http.post("/api/userExam/result",score);
+    }
+
+    function assignExamToUser(data){
+        return $http.post(userexam(),data);
     }
 
 

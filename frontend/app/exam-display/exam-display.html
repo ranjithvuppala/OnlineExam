@@ -1,14 +1,14 @@
-<div class="row" style="background-color: #d9edf7">
-<div class="container" style="background-color: #d9edf7">
-    <div class="row" style ="background-color: #2e6da4">
+
+<div class="container">
+    <div class="row">
         <div class="page-header">
-            <h1 class="text-center" style="color: snow">Online Examination</h1>
+            <h1 class="text-center">Online Examination</h1>
         </div>
     </div>
     <div class="row" >
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-        <h1 style="color: black">{{vm.getExam.exam.exam}}</h1>
+        <h1>Title of the Exam : {{vm.getExam.exam.exam}}</h1>
         </div>
     </div>
     <div class="row" ng-if ="!vm.ScoreNotEmpty()">
@@ -36,7 +36,7 @@
             </ol>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-lg btn-info">
+                    <button type="submit" class="btn btn-lg btn-primary">
                         <span class="glyphicon glyphicon-ok"></span>
                         Submit
                     </button>
@@ -58,7 +58,7 @@
 
         <div class="col-xs-12 text-center">
 
-            <button class="btn btn-lg btn-info" ng-click="vm.redirect()">
+            <button class="btn btn-lg btn-primary" ng-click="vm.redirect()">
                 Leave
                 <span class="glyphicon glyphicon-share"></span>
             </button>
@@ -69,5 +69,4 @@
     </div>
 
 
-</div>
 </div>

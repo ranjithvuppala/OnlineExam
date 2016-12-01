@@ -2,6 +2,7 @@ package tarun.bth.App.db.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Question {
@@ -11,6 +12,7 @@ public class Question {
 
     @JsonProperty
     @NotEmpty
+    @Length(max=255,message="must not be longer than 255 characters")
     private String question;
 
     @JsonProperty

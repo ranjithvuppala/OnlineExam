@@ -10,7 +10,7 @@ import java.util.List;
 
 @RegisterMapperFactory(BeanMapperFactory.class)
 public interface ExamDAO {
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS Exam(exam_id int auto_increment primary key, exam varchar(255))")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS Exam(exam_id int auto_increment primary key, exam varchar(25))")
     public void createTable();
 
     @SqlQuery("SELECT * FROM Exam")

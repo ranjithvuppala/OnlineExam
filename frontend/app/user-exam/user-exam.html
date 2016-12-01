@@ -1,12 +1,65 @@
 <div class="container">
     <navigation1 class="row"></navigation1>
     <div class="row">
-        <div class="col-xs-6">
-            <h5>Please choose a student whom you want to see the details</h5>
+        <div class="col-xs-3 text-right">
+            <h4>Please choose User</h4>
         </div>
-        <div class="col-xs-6">
-            <select class="form-control" ng-model="vm.SelectedUser" ng-options="option.username for option in vm.UserList track by option.id" ng-change="vm.getUserExamDetails(vm.SelectedUser)">
+        <div class="col-xs-3">
+            <select class="form-control" ng-model="SelectedUser" ng-change="vm.getUserExamDetails(SelectedUser)">
+                <option ng-repeat="option in vm.UserList" value="{{option}}">{{option.username}}</option>
             </select>
+        </div>
+    </div>
+    <div class="row" style="height:50px;" ></div>
+    <div class="row">
+        <div class="col-xs-12" ng-if="SelectedUser!==undefined">
+            <h3 >Exam Details of Selected User</h3>
+            <table class="table table-hover">
+                <tr style="color: snow;background-color: black">
+                    <th>Exam Name</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                </tr>
+                <tr ng-repeat="item in vm.UserExamList" ng-class="{'info':item.score!==null, 'default':item.score===null}" >
+                    <td>{{vm.examName(item.examId)}}</td>
+                    <td>{{item.score}}</td>
+                    <td>{{vm.SelectedStatus(item.score)}}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row" style="height:50px;" ></div>
+    <div class="row" ng-if="SelectedUser!==undefined">
+        <div class="col-xs-4">
+        <h3>Assign New Exam to User?</h3>
+        </div>
+        <div class="col-xs-4">
+            <div class="col-xs-12">&emsp14;</div>
+        <label class="switch" >
+            <input type="checkbox" ng-model="vm.AssignExam">
+            <div class="slider round"></div>
+        </label>
+        </div>
+    </div>
+
+    <div class="row" style="height:30px;" ></div>
+    <div class="row" ng-if="vm.AssignExam">
+
+        <div class="col-xs-4">
+            <h4>Select exam to be given for this User</h4>
+        </div>
+        <div class="col-xs-3">
+            <select class="form-control" ng-model="SelectedExam">
+                <option ng-repeat="exam in vm.UnassignedList" value="{{exam.exam_id}}">{{exam.exam}}</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+        <button class="btn btn-primary" ng-click="vm.sendMail(SelectedExam,SelectedUser)">
+            Send Email
+            <span class="glyphicon glyphicon-envelope"></span>
+        </button>
         </div>
     </div>
 </div>

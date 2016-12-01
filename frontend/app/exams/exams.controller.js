@@ -42,7 +42,6 @@ function ExamsController(questionService,examService,examQuestionService) {
     }
 
     function onSubmit2(array){
-        console.log(array);
         var n = array.length;
 
         for (i = 0; i < n; i++) {

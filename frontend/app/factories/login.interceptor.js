@@ -1,4 +1,4 @@
-function loginInterceptor($location) {
+function loginInterceptor($location,$q) {
     return {
         request: function(config) {
             return config;
@@ -18,10 +18,11 @@ function loginInterceptor($location) {
         if(response.status === 401|| response.status === 403)
         {
             $location.url('/login');
-            return response;
+            return $q.reject(response);
         }
-        return response;
-
+        else {
+            return $q.reject(response);
+        }
     }
 }
 

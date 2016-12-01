@@ -6,6 +6,7 @@ import tarun.bth.App.process.UserProcess;
 
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -43,7 +44,7 @@ public class UserResource {
     @RolesAllowed("ADMIN")
     @Path("/addUser")
     @POST
-    public User create(User user) {
+    public User create(@Valid User user) {
        return this.userProcess.create(user);
     }
 

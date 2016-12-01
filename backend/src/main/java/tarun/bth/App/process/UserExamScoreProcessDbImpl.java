@@ -28,4 +28,9 @@ public class UserExamScoreProcessDbImpl implements UserExamScoreProcess {
     public List<UserExamScore> findByUserId(Integer userId) {
         return this.userExamScoreDAO.findByUserId(userId);
     }
+
+    @Override
+    public UserExamScore create(UserExamScore userExamScore) {
+        return this.findbyId(this.userExamScoreDAO.create(userExamScore));
+    }
 }
