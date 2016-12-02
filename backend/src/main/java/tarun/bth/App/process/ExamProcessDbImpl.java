@@ -9,6 +9,7 @@ import tarun.bth.App.db.entity.ExamResponse;
 import tarun.bth.App.db.entity.QuestionResponse;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,5 +68,16 @@ public class ExamProcessDbImpl implements ExamProcess {
         examResponse.setQuestionResponseList(questionResponseList);
 
         return examResponse;
+    }
+
+    @Override
+    public List<ExamResponse> getAllExams() {
+        List<Exam> examList = this.getExams();
+        List<ExamResponse> examResponseList = new ArrayList<ExamResponse>();
+        for(Exam i:examList){
+            ExamResponse examResponse = this.findExamById(i.getExam_id());
+            examResponseList.add(examResponse);
+        }
+        return examResponseList;
     }
 }

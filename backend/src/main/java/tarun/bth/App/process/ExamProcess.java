@@ -15,4 +15,6 @@ public interface ExamProcess {
     void delete(Integer exam_id);
 
     ExamResponse findExamById(Integer exam_id);
+
+    List<ExamResponse> getAllExams();
 }

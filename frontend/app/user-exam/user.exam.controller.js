@@ -94,7 +94,13 @@ function UserExamController($location,loginService,mailService,examService){
                 vm.UserExamList.push(userExamScore);
                 console.log(JSON.stringify(vm.UserExamList));
                 vm.unAssignedExamList();
-                mailService.sendExam(usr.username,userExamScore.id);
+                return mailService.sendExam(usr.username,userExamScore.id)
+                    .then(function (response) {
+                        if(response.data!==200){
+                            alert("Mail Server down the link has been created but not delivered to User.");
+                        }
+                    }
+                    );
             })
             .catch(vm.showError);
 

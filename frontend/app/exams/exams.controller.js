@@ -17,9 +17,15 @@ function ExamsController(questionService,examService,examQuestionService) {
         vm.exam = parentControllerHasSetData ? vm.data.exam : '';
         vm.submittedExamTitle = [];
         vm.ExamQuestion = [];
-        return questionService.list1().then(function retrievedQuestions(response) {
-            vm.left = response.data;
-            vm.right = [];
+        return questionService.list1()
+            .then(function retrievedQuestions(response) {
+                vm.left = response.data;
+                vm.right = [];
+                return examService.examResponseList()
+                    .then(function (res) {
+                        vm.ExamResponseList=res.data;
+                        console.log(JSON.stringify(vm.ExamResponseList));
+                    });
         });
     }
 

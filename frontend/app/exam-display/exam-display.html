@@ -13,30 +13,21 @@
     </div>
     <div class="row" ng-if ="!vm.ScoreNotEmpty()">
         <div class="col-xs-12"style="height: 50px;"></div>
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-
-
+        <div class="col-xs-12">
             <form ng-submit="vm.onSubmit(vm.getCorrectOptions)">
-            <ol>
-            <div class="row" ng-repeat="questionResponse in vm.getExam.questionResponseList">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <li>{{questionResponse.question.question}}</li>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-xs-12" ng-repeat="choice in questionResponse.choiceList">
-                            <input class ="form-check-input" type="radio" name="{{questionResponse.question.question}}" ng-model="vm.getCorrectOptions[questionResponse.question.question_id]" ng-value="choice.choice_id" > &emsp14;{{choice.choice}}</input>
-                            <div class="col-xs-12"style="height: 10px;"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            </ol>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="questionResponse in vm.getExam.questionResponseList" style="background-color: black;color: snow">
+                    <h4>{{questionResponse.question.question}}</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="choice in questionResponse.choiceList" style="background-color: snow;color: black">
+                            <input class="form-check-input" type="radio" name="{{questionResponse.question.question}}" ng-model="vm.getCorrectOptions[questionResponse.question.question_id]" ng-value="choice.choice_id" > &emsp14;{{choice.choice}}</input>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn btn-primary">
                         <span class="glyphicon glyphicon-ok"></span>
                         Submit
                     </button>
@@ -45,7 +36,9 @@
 
             </form>
         </div>
-        <div class="col-xs-2"></div>
+
+        <div class="col-xs-12"style="height: 50px;"></div>
+
     </div>
 
 

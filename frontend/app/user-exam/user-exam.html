@@ -20,7 +20,7 @@
                     <th>Score</th>
                     <th>Status</th>
                 </tr>
-                <tr ng-repeat="item in vm.UserExamList" ng-class="{'info':item.score!==null, 'default':item.score===null}" >
+                <tr ng-repeat="item in vm.UserExamList" ng-class="{'info':item.score!==null, 'danger':item.score===null}" >
                     <td>{{vm.examName(item.examId)}}</td>
                     <td>{{item.score}}</td>
                     <td>{{vm.SelectedStatus(item.score)}}</td>

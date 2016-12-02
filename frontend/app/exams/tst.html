@@ -1,0 +1,23 @@
+<div class="row" ng-if="!vm.submittedExamTitleNotEmpty()">
+    <div class="col-xs-6" ng-repeat="ExamResponse in vm.ExamResponseList">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title pull-left">Title : {{ExamResponse.exam.exam}}</h3>
+                <button  class="btn btn-xs pull-right" style="color:snow; background-color: black" ng-click="vm.destroy(QuestionResponse.question.question_id)">
+                    Delete
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="list-group">
+                <li class="list-group-item" ng-repeat="questionResponse in ExamResponse.questionResponseList">
+                    {{questionResponse.question.question}}
+                    <div class="list-group">
+                        <li class="list-group-item" ng-repeat="choice in questionResponse.choiceList">{{choice.choice}}</li>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -16,7 +16,6 @@
                     <span class="glyphicon glyphicon-remove-circle"></span>
                 </button>
             </div>
-
         </form>
     </div>
 
@@ -88,27 +87,25 @@
 
 
     <div class="row" ng-if="!vm.submittedExamTitleNotEmpty()">
-        <div class="row"><div class="col-xs-12" style = "height: 50px;"></div></div>
+        <div class="col-xs-6" ng-repeat="ExamResponse in vm.ExamResponseList">
+            <ul class="list-group">
+                <li class="list-group-item active" >
+                    <h3 class="panel-title pull-left">Title : {{ExamResponse.exam.exam}}</h3>
 
-        <div class="col-xs-6" ng-repeat="QuestionResponse in vm.QuestionList">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title pull-left">Question : {{QuestionResponse.question.question}}</h3>
-                    <button  class="btn btn-xs pull-right" style="color:snow; background-color: black" ng-click="vm.destroy(QuestionResponse.question.question_id)">
-                        Delete
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
                     <div class="clearfix"></div>
-                </div>
-
-                <div class="panel-body" ng-repeat = "choice in QuestionResponse.choiceList">
-                    {{choice.choice}}
-                </div>
-            </div>
+                </li>
+                <li class="list-group-item" style="background-color: snow">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="questionResponse in ExamResponse.questionResponseList" style="background-color: black;color: snow">
+                            {{questionResponse.question.question}}
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="choice in questionResponse.choiceList" style="background-color: snow;color: black">{{choice.choice}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-
-
-
 
 </div>

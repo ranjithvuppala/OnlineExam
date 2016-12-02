@@ -20,7 +20,6 @@ public interface ExamDAO {
     @GetGeneratedKeys
     int create(@BindBean Exam exam);
 
-
     @SqlQuery("SELECT * FROM `Exam` WHERE exam_id = :exam_id")
     public Exam findExamById(@Bind("exam_id") int exam_id);
 

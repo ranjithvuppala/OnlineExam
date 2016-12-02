@@ -36,24 +36,21 @@ function ExamDisplayController(examService,$location,loginService,$window){
         return examService.display(test3)
             .then(function getExam(response){
                 vm.getExam = response.data;
-                console.log(vm.getExam);
             })
     }
 
 
     function onSubmit(obj){
-        console.log(obj);
-        console.log((Object.keys(obj)));
         values = Object.values(obj);
-        console.log(vm.getExam.questionResponseList[0].question.question_id);
+        console.log(values);
         var n = vm.getExam.questionResponseList.length;
-
+        if(values.length===n){
         for (i=0;i<n;i++){
             vm.QuestionList[i] = {question_id: null, correctChoice_id: null};
             vm.QuestionList[i].question_id = vm.getExam.questionResponseList[i].question.question_id;
             vm.QuestionList[i].correctChoice_id = values[i];
         }
-
+        console.log(vm.QuestionList);
 
         return examService.verifyResult(vm.QuestionList)
             .then(function result(response){
@@ -62,9 +59,11 @@ function ExamDisplayController(examService,$location,loginService,$window){
                     .then(vm.$onInit)
                     .catch(vm.showError);
             })
-            .catch(vm.showError)
-            ;
-
+            .catch(vm.showError);
+        }
+        else{
+            alert("Please answer all questions");
+        }
     }
 
 
@@ -82,9 +81,8 @@ function ExamDisplayController(examService,$location,loginService,$window){
 
         $location.search({foo:null});
         $location.hash(null);
-        //$location.path('/');
+        $location.path('/');
         loginService.ClearHeaders();
-        $window.close();
 
     }
 

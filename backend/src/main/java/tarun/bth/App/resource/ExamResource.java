@@ -33,6 +33,12 @@ public class ExamResource {
         return this.examProcess.getExams();
     }
 
+    @GET
+    @Path("/all")
+    public List<ExamResponse> getExamResponseList(){
+        return this.examProcess.getAllExams();
+    }
+
     @POST
     public Exam create(@Valid Exam exam) {
         return this.examProcess.create(exam);
