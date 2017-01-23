@@ -20,7 +20,7 @@ public class SendMail {
         msg.setText("Testing some Mailgun awesomeness");
         msg.setSentDate(new Date());
         SMTPTransport t = (SMTPTransport)session.getTransport("smtps");
-        t.connect("smtp.mailgun.org", "postmaster@sandbox87c45377f9d348848291132368fd7e6a.mailgun.org", "4aa744041ca24f0eff6d91cfdcc617c4");
+        t.connect("smtp.mailgun.org", "mailgun-api", "mail-gun key");
         t.sendMessage(msg, msg.getAllRecipients());
         System.out.println("Response: " + t.getLastServerResponse());
         t.close();
